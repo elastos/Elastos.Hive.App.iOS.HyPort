@@ -10,6 +10,10 @@ import UIKit
 
 class HiveModel {
 
-
+    var name: String!
+    var size: String!
+    var type: String!
+    var itemId: String!
+    var fullPath: String!
 
 }

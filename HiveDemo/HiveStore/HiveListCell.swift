@@ -13,10 +13,10 @@ class HiveListCell: UITableViewCell {
     var nameLable: UILabel?
     var row: UIImageView?
     var longPress: UILongPressGestureRecognizer!
-    var model: HiveItemInfo? {
+    var model: HiveModel? {
         didSet{
-            nameLable?.text = model?.getValue(HiveItemInfo.name)
-            if (model?.getValue(HiveItemInfo.type) == "file" || model?.getValue(HiveItemInfo.type) == "1") {
+            nameLable?.text = model?.name
+            if (model?.type == "file" ) {
                 icon?.image = UIImage.init(named: "files")
                 row?.isHidden = true
             }

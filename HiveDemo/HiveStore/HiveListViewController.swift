@@ -18,7 +18,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
     var fullPath: String!
     var path: String?
     var hiveClient: HiveClientHandle!
-    var dataSource: Array<HiveItemInfo> = []
+    var dataSource: Array<HiveModel> = []
     var dHandle: HiveDirectoryHandle?
     var fHandle: HiveFileHandle?
 
@@ -90,9 +90,20 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                 return directory.getChildren()
             }
             .done{ item in
-                self.dataSource = item.children
+                item.children.enumerated().forEach{ (idex, item) in
+                    let hiveItem = HiveModel()
+                    hiveItem.itemId = item.getValue("itemId")
+                    hiveItem.name = item.getValue("name")
+                    hiveItem.size = item.getValue("size")
+                    hiveItem.type = item.getValue("type")
+                    hiveItem.fullPath = self.dHandle?.pathName
+                    self.dataSource.append(hiveItem)
+                }
                 self.refreshUI()
                 self.mainTableView.reloadData()
+                if type == DriveType.hiveIPFS {
+                    self.getItemInfo(0)
+                }
             }
             .catch { error in
                 print(error)
@@ -117,12 +128,52 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                 return rootDirectory.getChildren()
             }
             .done{ item in
-                self.dataSource = item.children
+                item.children.enumerated().forEach{ (idex, item) in
+                    let hiveItem = HiveModel()
+                    hiveItem.itemId = item.getValue("itemId")
+                    hiveItem.name = item.getValue("name")
+                    hiveItem.size = item.getValue("size")
+                    hiveItem.type = item.getValue("type")
+                    hiveItem.fullPath = self.dHandle?.pathName
+                    self.dataSource.append(hiveItem)
+                }
                 self.refreshUI()
                 self.mainTableView.reloadData()
+                if type == DriveType.hiveIPFS {
+                    self.getItemInfo(0)
+                }
             }
             .catch { error in
                 print(error)
+        }
+    }
+
+    func getItemInfo(_ index: Int) {
+        if index >= self.dataSource.count{
+            return
+        }
+        let item = dataSource[index]
+        let path = item.fullPath! + item.name
+        hiveClient.defaultDriveHandle().then{ drive -> HivePromise<HiveItemInfo> in
+            return drive.getItemInfo(path)
+            }.done{ itemInfo in
+                let newItem = HiveModel()
+                newItem.name = itemInfo.getValue("name")
+                newItem.size = itemInfo.getValue("size")
+                newItem.type = itemInfo.getValue("type")
+                newItem.itemId = itemInfo.getValue("itemId")
+                self.dataSource[index] = newItem
+                let indexPath = IndexPath.init(row: index, section: 0)
+                UIView.performWithoutAnimation {
+                    self.mainTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none)
+                }
+                self.getItemInfo(index + 1)
+            }.catch{ error in
+                print(error)
+                if index == self.dataSource.count - 1{
+                    return
+                }
+                self.getItemInfo(index)
         }
     }
     // MARK: refresh
@@ -159,13 +210,13 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard dataSource[indexPath.row].getValue(HiveItemInfo.type) == "folder" else {
+        guard dataSource[indexPath.row].type == "directory" else {
             // TODO view for file
             HiveHud.show(self.view, "此功能还在开发中", 1.5)
             return
         }
 
-        let selfName: String = dataSource[indexPath.row].getValue(HiveItemInfo.name)
+        let selfName: String = dataSource[indexPath.row].name
         let fullPath = computingFullPath(self.dHandle!, selfName)
         let newListVC = HiveListViewController()
         newListVC.path = selfName
@@ -183,8 +234,8 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         }
         let point: CGPoint = sender.location(in: mainTableView)
         let indexPath = mainTableView.indexPathForRow(at: point)
-        let name = dataSource[(indexPath?.row)!].getValue(HiveItemInfo.name)
-        let type = dataSource[(indexPath?.row)!].getValue(HiveItemInfo.type)
+        let name = dataSource[(indexPath?.row)!].name!
+        let type = dataSource[(indexPath?.row)!].type
 
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         let deleteAction: UIAlertAction = UIAlertAction(title: "删除", style: UIAlertAction.Style.default) { (action) in

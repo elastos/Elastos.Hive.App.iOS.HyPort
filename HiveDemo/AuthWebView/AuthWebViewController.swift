@@ -74,8 +74,9 @@ public class AuthWebViewController: UIViewController, WKUIDelegate, WKNavigation
 //            if let handle = responseHandle {
 //                handle(navigationAction.request.url, nil)
 //            }
-                let rootViewController = UIApplication.shared.keyWindow?.rootViewController
-                rootViewController!.dismiss(animated: true, completion: nil)
+//                let rootViewController = UIApplication.shared.keyWindow?.rootViewController
+//                rootViewController!.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
