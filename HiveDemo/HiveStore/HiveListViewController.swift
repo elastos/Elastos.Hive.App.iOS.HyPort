@@ -102,7 +102,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                 self.refreshUI()
                 self.mainTableView.reloadData()
                 if type == DriveType.hiveIPFS {
-                    self.getItemInfo(0)
+                    self.getItemInfo()
                 }
             }
             .catch { error in
@@ -140,7 +140,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                 self.refreshUI()
                 self.mainTableView.reloadData()
                 if type == DriveType.hiveIPFS {
-                    self.getItemInfo(0)
+                    self.getItemInfo()
                 }
             }
             .catch { error in
@@ -148,12 +148,15 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
 
-    func getItemInfo(_ index: Int) {
-        if index >= self.dataSource.count{
-            return
+    func getItemInfo() {
+        dataSource.enumerated().forEach { (index, item) in
+            refreshItem(index, item: item)
         }
+    }
+
+    func refreshItem(_ index: Int, item: HiveModel) {
         let item = dataSource[index]
-        let path = item.fullPath! + item.name
+        let path = item.fullPath! + "/" + item.name
         hiveClient.defaultDriveHandle().then{ drive -> HivePromise<HiveItemInfo> in
             return drive.getItemInfo(path)
             }.done{ itemInfo in
@@ -167,13 +170,8 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                 UIView.performWithoutAnimation {
                     self.mainTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none)
                 }
-                self.getItemInfo(index + 1)
             }.catch{ error in
-                print(error)
-                if index == self.dataSource.count - 1{
-                    return
-                }
-                self.getItemInfo(index)
+                self.refreshItem(index, item: item)
         }
     }
     // MARK: refresh
@@ -240,7 +238,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         let deleteAction: UIAlertAction = UIAlertAction(title: "删除", style: UIAlertAction.Style.default) { (action) in
 
-            if type == "folder" {
+            if type == "directory" {
                 self.dHandle?.directoryHandle(atName: name).done{ deleteDHandle in
                     deleteDHandle.deleteItem().done{ success in
                         self.dataSource.remove(at: indexPath!.row)
@@ -281,7 +279,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         sheet.addAction(deleteAction)
         sheet.addAction(renameAction)
         sheet.addAction(cancleAction)
-        if type == "folder" {
+        if type == "directory" {
             sheet.addAction(shareAction)
             sheet.addAction(uploadAction)
         }
