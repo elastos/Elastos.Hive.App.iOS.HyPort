@@ -15,20 +15,18 @@ let addrs = [
     "http://18.217.147.205:9095",
     "http://18.219.53.133:9095"]
 class HiveManager: Authenticator {
-    func didSucceed() {
-        DispatchQueue.main.sync {
-            let rootViewController = UIApplication.shared.keyWindow?.rootViewController
-            rootViewController!.dismiss(animated: true, completion: nil)
-        }
-    }
 
+    var authWebViewController : AuthWebViewController?
     func requestAuthentication(_ requestURL: String) -> Bool {
-        let authViewController: AuthWebViewController = AuthWebViewController()
-        DispatchQueue.main.sync {
-            let rootViewController = UIApplication.shared.keyWindow?.rootViewController
-            rootViewController!.present(authViewController, animated: true, completion: nil)
-            authViewController.loadRequest(requestURL)
-        }
+//        let authViewController: AuthWebViewController = AuthWebViewController()
+//        DispatchQueue.main.sync {
+//            let rootViewController: UINavigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
+//            authViewController.definesPresentationContext = true;
+//            authViewController.modalPresentationStyle = .overCurrentContext
+//            rootViewController.topViewController!.present(authViewController, animated: true, completion: nil)
+//            authViewController.loadRequest(requestURL)
+//            self.authWebViewController = authViewController;
+//        }
         return true
     }
 
@@ -63,6 +61,7 @@ class HiveManager: Authenticator {
             globalQueue.async {
                 do {
                     _ = try self.hiveClient.login(self as Authenticator)
+                    self.authWebViewController?.dismiss(animated: true, completion: nil)
                     resolver.fulfill(Void())
                 }catch {
                     resolver.reject(error)

@@ -17,7 +17,7 @@ let isPad = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad)
 let isPhone = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone)
 let isiPhoneX = (UIScreen.instancesRespond(to: #selector(getter: UIScreen.currentMode)) ? __CGSizeEqualToSize(CGSize(width: 1125, height: 2436), (UIScreen.main.currentMode?.size)!) : false)
 
-let SAFE_BAR_Height = UIApplication.shared.statusBarFrame.height + 44
+//let SAFE_BAR_Height = UIApplication.shared.statusBarFrame.height + 44
 
 
 /// MARK: UI

@@ -30,6 +30,7 @@ class HomeViewController: UIViewController {
     }
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.navigationItem.title = "Hive"
         self.view.backgroundColor = ColorHex("#f7f3f3")
@@ -38,7 +39,7 @@ class HomeViewController: UIViewController {
         creatUI()
         addNotification()
     }
-
+    
     func addNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(showAddFriendNotification(sender:)), name: .showAddFriend, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showFriendListNotification(sender:)), name: .showFriendList, object: nil)
@@ -59,7 +60,7 @@ class HomeViewController: UIViewController {
         oneDrive.button.addTarget(self, action: #selector(listAction(_:)), for: UIControl.Event.touchUpInside)
         oneDrive.nameLable.text = "OneDrive"
         driveStackView = UIStackView(arrangedSubviews: [ipfsDrive, oneDrive])
-        driveStackView.frame = CGRect(x: 20, y: SAFE_BAR_Height + 40, width: SCREEN_WIDTH - 40, height: 88)
+        driveStackView.frame = CGRect(x: 20, y: 40, width: SCREEN_WIDTH - 40, height: 88)
         driveStackView.axis = NSLayoutConstraint.Axis.horizontal
         driveStackView.alignment = UIStackView.Alignment.fill
         driveStackView.distribution = UIStackView.Distribution.fillEqually

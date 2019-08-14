@@ -52,7 +52,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
             make.left.equalToSuperview().offset(20)
             make.height.equalTo(44)
             make.right.equalToSuperview().offset(-12)
-            make.top.equalTo(SAFE_BAR_Height)
+            make.top.equalTo(self.view)
         }
 
         mainTableView.snp.makeConstraints { (make) in
