@@ -180,20 +180,6 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         self.pathView.containLable.text = fullPath
     }
 
-    func computingFullPath(_ handle: HiveDirectoryHandle, _ selfName: String) -> String {
-
-        let parentPath: String = handle.parentPathName()
-        let pathName: String = handle.pathName
-        var fullPath = "\(pathName)/\(selfName)"
-        if parentPath == "/" {
-            fullPath = "\(pathName)/\(selfName)"
-        }
-        if pathName == "/" {
-            fullPath = "/\(selfName)"
-        }
-        return fullPath
-    }
-
     //    MARK: tableviewDelegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
@@ -214,11 +200,14 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
             return
         }
 
-        let selfName: String = dataSource[indexPath.row].name
-        let fullPath = computingFullPath(self.dHandle!, selfName)
+        let item = dataSource[indexPath.row]
+        let currentName = item.name!
         let newListVC = HiveListViewController()
-        newListVC.path = selfName
-        newListVC.fullPath = fullPath
+        newListVC.path = currentName
+        newListVC.fullPath = self.dHandle!.pathName + "/" + currentName
+        if self.dHandle!.pathName == "/" {
+            newListVC.fullPath = self.dHandle!.pathName + currentName
+        }
         newListVC.driveType = driveType
 
         self.navigationController?.pushViewController(newListVC, animated: true)
