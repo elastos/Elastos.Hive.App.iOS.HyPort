@@ -13,11 +13,11 @@ class HomeViewController: UIViewController {
 
     var leftVC: LeftViewController = LeftViewController()
     var draw: Drawer!
+    var driveType: DriveType?
     var mainTable: UITableView!
     var ipfsDrive: DriveView!
     var oneDrive: DriveView!
     var driveStackView: UIStackView!
-
     var line: UIView!
 
     var myCard: DriveView!
@@ -43,6 +43,7 @@ class HomeViewController: UIViewController {
     func addNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(showAddFriendNotification(sender:)), name: .showAddFriend, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showFriendListNotification(sender:)), name: .showFriendList, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showActiveHiveListNotification(_ :)), name: .showActiveHiveList, object: nil)
     }
 
     func createLeftItem() {
@@ -105,27 +106,44 @@ class HomeViewController: UIViewController {
         }
     }
 
-    //    MARK: Button action
-    @objc func listAction(_ sendr: UIButton) {
-        let typeView = sendr.superview
+    func skipList(_ type: DriveType, _ animated: Bool) {
         let hiveListVC = HiveListViewController()
-        if (typeView?.isEqual(ipfsDrive))! {
-            hiveListVC.driveType = .hiveIPFS
-        }
-        else if (typeView?.isEqual(oneDrive))! {
+        var storeValue = ""
+        switch type {
+
+        case .nativeStorage: break
+        case .oneDrive:
+            storeValue = "oneDrive"
             hiveListVC.driveType = .oneDrive
+        case .hiveIPFS:
+            storeValue = "hiveIPFS"
+            hiveListVC.driveType = .hiveIPFS
+        case .dropBox: break
+        case .ownCloud: break
         }
+        UserDefaults.standard.set(storeValue, forKey: "DriveType")
+
         HiveManager.shareInstance.login(hiveListVC.driveType).done { succeed in
             hiveListVC.fullPath = "/"
-            self.navigationController?.pushViewController(hiveListVC, animated: true)
+            self.navigationController?.pushViewController(hiveListVC, animated: animated)
             }
             .catch { error in
                 print(error)
-            }
+        }
+    }
+    //    MARK: Button action
+    @objc func listAction(_ sendr: UIButton) {
+        let typeView = sendr.superview
+        if (typeView?.isEqual(ipfsDrive))! {
+            skipList(.hiveIPFS, true)
+        }
+        else if (typeView?.isEqual(oneDrive))! {
+            skipList(.oneDrive, true)
+        }
     }
 
-   @objc func leftList() {
-    draw.show()
+    @objc func leftList() {
+        draw.show()
     }
 
     @objc func addFriendAction() {
@@ -155,6 +173,18 @@ class HomeViewController: UIViewController {
         draw.close()
         let myFriendVC = FriendViewController()
         self.navigationController?.pushViewController(myFriendVC, animated: false)
+    }
+
+    @objc func showActiveHiveListNotification(_ sender: Notification) {
+        draw.close()
+        let typeString = sender.object as! String
+        var type: DriveType = .hiveIPFS
+        if typeString == "oneDrive" {
+            type = .oneDrive
+        }else if typeString == "hiveIPFS" {
+            type = .hiveIPFS
+        }
+        skipList(type, false)
     }
 
 }

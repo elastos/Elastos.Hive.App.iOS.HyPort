@@ -11,6 +11,7 @@ import UIKit
 extension Notification.Name {
     static let showAddFriend = Notification.Name("ShowAddFriend")
     static let showFriendList = Notification.Name("ShowFriendList")
+    static let showActiveHiveList = NSNotification.Name("showActiveHiveList")
 
 }
 
@@ -53,6 +54,7 @@ class LeftViewController: UIViewController {
 
         icloudStore = NormalView()
         icloudStore.icon.image = UIImage.init(named: "icloud")
+        icloudStore.button.addTarget(self, action: #selector(hiveStore), for: UIControl.Event.touchUpInside)
         icloudStore.title.text = "云端存储"
 
         reciveFile = SwitchView()
@@ -75,5 +77,14 @@ class LeftViewController: UIViewController {
 
     @objc func friendList() {
         NotificationCenter.default.post(name: .showFriendList, object: nil)
+    }
+
+    @objc func hiveStore() {
+        let type = UserDefaults.standard.string(forKey: "DriveType")
+        guard type != nil else {
+            HiveHud.show(self.view, "没有活跃的云端存储，请先登录云端", 1.5)
+            return
+        }
+        NotificationCenter.default.post(name: .showActiveHiveList, object: type)
     }
 }
