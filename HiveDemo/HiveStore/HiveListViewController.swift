@@ -70,7 +70,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
 
     //  MARK: - Request
     func requestChaildren(_ type: DriveType, path: String) {
-        HiveHud.showMask(self.view, title: "请稍等", animated: true)
+        HiveHud.showMask(self.view, title: "Please wait", animated: true)
         if path == "/" {
             requestRoot(type)
             return
@@ -203,7 +203,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard dataSource[indexPath.row].type == "directory" else {
             // TODO view for file
-            HiveHud.show(self.view, "此功能还在开发中", 1.5)
+            HiveHud.show(self.view, "Function is developing", 1.5)
             return
         }
 
@@ -232,51 +232,51 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         let type = dataSource[(indexPath?.row)!].type
 
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-        let deleteAction: UIAlertAction = UIAlertAction(title: "删除", style: UIAlertAction.Style.default) { (action) in
-            HiveHud.showMask(self.view, title: "请稍等", animated: true)
+        let deleteAction: UIAlertAction = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default) { (action) in
+            HiveHud.showMask(self.view, title: "Please wait", animated: true)
             if type == "directory" {
                 self.dHandle?.directoryHandle(atName: name).done{ deleteDHandle in
                     deleteDHandle.deleteItem().done{ success in
                         HiveHud.hiddenMask()
-                        HiveHud.show(self.view, "删除成功", 1.5)
+                        HiveHud.show(self.view, "Delete success", 1.5)
                         self.dataSource.remove(at: indexPath!.row)
                         self.mainTableView.reloadData()
                         }.catch{ error in
                             HiveHud.hiddenMask()
-                            HiveHud.show(self.view, "删除失败", 1.5)
+                            HiveHud.show(self.view, "Delete failed", 1.5)
                     }
                     }.catch{ error in
                         HiveHud.hiddenMask()
-                        HiveHud.show(self.view, "删除失败", 1.5)
+                        HiveHud.show(self.view, "Delete failed", 1.5)
                 }
             }
             else {
                 self.dHandle?.fileHandle(atName: name).done{ deleteFile in
                     deleteFile.deleteItem().done{ success in
                         HiveHud.hiddenMask()
-                        HiveHud.show(self.view, "删除成功", 1.5)
+                        HiveHud.show(self.view, "Delete success", 1.5)
                         self.dataSource.remove(at: indexPath!.row)
                         self.mainTableView.reloadData()
                         }.catch{ error in
                             HiveHud.hiddenMask()
-                            HiveHud.show(self.view, "删除失败", 1.5)
+                            HiveHud.show(self.view, "Delete failed", 1.5)
                     }
                     }.catch{ error in
                         HiveHud.hiddenMask()
-                        HiveHud.show(self.view, "删除失败", 1.5)
+                        HiveHud.show(self.view, "Delete failed.", 1.5)
                 }
             }
         }
-        let renameAction: UIAlertAction = UIAlertAction(title: "重命名", style: UIAlertAction.Style.default) { (action) in
-            HiveHud.show(self.view, "此功能还在开发中", 1.5)
+        let renameAction: UIAlertAction = UIAlertAction(title: "Rename", style: UIAlertAction.Style.default) { (action) in
+            HiveHud.show(self.view, "Function is developing", 1.5)
         }
-        let shareAction: UIAlertAction = UIAlertAction(title: "分享", style: UIAlertAction.Style.default) { (action) in
-            HiveHud.show(self.view, "此功能还在开发中", 1.5)
+        let shareAction: UIAlertAction = UIAlertAction(title: "Share", style: UIAlertAction.Style.default) { (action) in
+            HiveHud.show(self.view, "Function is developing", 1.5)
         }
-        let uploadAction: UIAlertAction = UIAlertAction(title: "上传", style: UIAlertAction.Style.default) { (action) in
-             HiveHud.show(self.view, "此功能还在开发中", 1.5)
+        let uploadAction: UIAlertAction = UIAlertAction(title: "Upload", style: UIAlertAction.Style.default) { (action) in
+             HiveHud.show(self.view, "Function is developing", 1.5)
         }
-        let cancleAction: UIAlertAction = UIAlertAction(title: "取消", style: UIAlertAction.Style.cancel) { (action) in
+        let cancleAction: UIAlertAction = UIAlertAction(title: "Cancle", style: UIAlertAction.Style.cancel) { (action) in
         }
         sheet.addAction(deleteAction)
         sheet.addAction(renameAction)
@@ -292,15 +292,15 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
     //  MARK: - Button action
     @objc func creatDirectory() {
         var inpuText: UITextField = UITextField()
-        let msgAlert = UIAlertController(title: nil, message: "请输入文件夹名称", preferredStyle: UIAlertController.Style.alert)
-        let ok = UIAlertAction(title: "确定", style: .default) { action in
+        let msgAlert = UIAlertController(title: nil, message: "Please input the name", preferredStyle: UIAlertController.Style.alert)
+        let ok = UIAlertAction(title: "Sure", style: .default) { action in
             if inpuText.text == "" {
-                HiveHud.show(self.view, "名称不能为空", 1.5)
+                HiveHud.show(self.view, "Name not nil", 1.5)
             }else {
-                HiveHud.showMask(self.view, title: "请稍等", animated: true)
+                HiveHud.showMask(self.view, title: "Please wait", animated: true)
                 self.dHandle?.createDirectory(withName: inpuText.text!).done{ directory in
                     HiveHud.hiddenMask()
-                    HiveHud.show(self.view, "创建成功", 1.5)
+                    HiveHud.show(self.view, "Create success", 1.5)
                     let item = HiveModel()
                     item.name = inpuText.text!
                     item.type = "directory"
@@ -310,16 +310,16 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                     self.mainTableView.reloadData()
                     }.catch{ error in
                         HiveHud.hiddenMask()
-                        HiveHud.show(self.view, "同名文件已经存在", 1.5)
+                        HiveHud.show(self.view, "The same name directory alreadly exists", 1.5)
                 }
             }
         }
-        let cancle = UIAlertAction(title: "取消", style: .cancel) { action in
+        let cancle = UIAlertAction(title: "Cancle", style: .cancel) { action in
         }
 
         msgAlert.addTextField { textFiled in
             inpuText = textFiled
-            inpuText.placeholder = "请输入文件夹名称"
+            inpuText.placeholder = "Please input the name"
         }
         msgAlert.addAction(ok)
         msgAlert.addAction(cancle)

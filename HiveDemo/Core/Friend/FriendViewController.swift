@@ -44,10 +44,17 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func getFriendList() {
         if (Carrier.sharedInstance()?.isReady())! {
             do {
+                HiveHud.showMask(self.view, title: "Please wait", animated: true)
                 friendList = try (Carrier.sharedInstance()?.getFriends())!
+                HiveHud.hiddenMask()
+                guard friendList.count != 0 else {
+                    HiveHud.show(self.view, "No friend", 1.5)
+                    return
+                }
                 mainTableView.reloadData()
             }
             catch {
+                HiveHud.hiddenMask()
                 print(error)
             }
         }else {
