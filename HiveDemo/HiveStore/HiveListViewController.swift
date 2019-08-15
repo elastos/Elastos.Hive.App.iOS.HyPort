@@ -70,7 +70,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
 
     //  MARK: - Request
     func requestChaildren(_ type: DriveType, path: String) {
-
+        HiveHud.showMask(self.view, title: "请稍等", animated: true)
         if path == "/" {
             requestRoot(type)
             return
@@ -92,6 +92,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                 return directory.getChildren()
             }
             .done{ item in
+                HiveHud.hiddenMask()
                 item.children.enumerated().forEach{ (idex, item) in
                     let hiveItem = HiveModel()
                     hiveItem.itemId = item.getValue("itemId")
@@ -108,6 +109,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             }
             .catch { error in
+                HiveHud.hiddenMask()
                 print(error)
         }
     }
@@ -130,6 +132,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                 return rootDirectory.getChildren()
             }
             .done{ item in
+                HiveHud.hiddenMask()
                 item.children.enumerated().forEach{ (idex, item) in
                     let hiveItem = HiveModel()
                     hiveItem.itemId = item.getValue("itemId")
@@ -146,6 +149,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             }
             .catch { error in
+                HiveHud.hiddenMask()
                 print(error)
         }
     }
@@ -229,32 +233,36 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
 
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         let deleteAction: UIAlertAction = UIAlertAction(title: "删除", style: UIAlertAction.Style.default) { (action) in
-
+            HiveHud.showMask(self.view, title: "请稍等", animated: true)
             if type == "directory" {
                 self.dHandle?.directoryHandle(atName: name).done{ deleteDHandle in
                     deleteDHandle.deleteItem().done{ success in
+                        HiveHud.hiddenMask()
                         HiveHud.show(self.view, "删除成功", 1.5)
                         self.dataSource.remove(at: indexPath!.row)
                         self.mainTableView.reloadData()
                         }.catch{ error in
-                            print(error)
+                            HiveHud.hiddenMask()
                             HiveHud.show(self.view, "删除失败", 1.5)
                     }
                     }.catch{ error in
-                        print(error)
+                        HiveHud.hiddenMask()
                         HiveHud.show(self.view, "删除失败", 1.5)
                 }
             }
             else {
                 self.dHandle?.fileHandle(atName: name).done{ deleteFile in
                     deleteFile.deleteItem().done{ success in
+                        HiveHud.hiddenMask()
                         HiveHud.show(self.view, "删除成功", 1.5)
                         self.dataSource.remove(at: indexPath!.row)
                         self.mainTableView.reloadData()
                         }.catch{ error in
+                            HiveHud.hiddenMask()
                             HiveHud.show(self.view, "删除失败", 1.5)
                     }
                     }.catch{ error in
+                        HiveHud.hiddenMask()
                         HiveHud.show(self.view, "删除失败", 1.5)
                 }
             }
@@ -289,7 +297,9 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
             if inpuText.text == "" {
                 HiveHud.show(self.view, "名称不能为空", 1.5)
             }else {
+                HiveHud.showMask(self.view, title: "请稍等", animated: true)
                 self.dHandle?.createDirectory(withName: inpuText.text!).done{ directory in
+                    HiveHud.hiddenMask()
                     HiveHud.show(self.view, "创建成功", 1.5)
                     let item = HiveModel()
                     item.name = inpuText.text!
@@ -299,7 +309,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                     self.dataSource.insert(item, at: 0)
                     self.mainTableView.reloadData()
                     }.catch{ error in
-                        print(error)
+                        HiveHud.hiddenMask()
                         HiveHud.show(self.view, "同名文件已经存在", 1.5)
                 }
             }
