@@ -233,6 +233,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
             if type == "directory" {
                 self.dHandle?.directoryHandle(atName: name).done{ deleteDHandle in
                     deleteDHandle.deleteItem().done{ success in
+                        HiveHud.show(self.view, "删除成功", 1.5)
                         self.dataSource.remove(at: indexPath!.row)
                         self.mainTableView.reloadData()
                         }.catch{ error in
@@ -247,6 +248,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
             else {
                 self.dHandle?.fileHandle(atName: name).done{ deleteFile in
                     deleteFile.deleteItem().done{ success in
+                        HiveHud.show(self.view, "删除成功", 1.5)
                         self.dataSource.remove(at: indexPath!.row)
                         self.mainTableView.reloadData()
                         }.catch{ error in
@@ -281,12 +283,38 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
 
     //  MARK: - Button action
     @objc func creatDirectory() {
-
-        dHandle?.createDirectory(withName: "测试添加Directory-1").done{ directory in
-            self.requestChaildren(self.driveType, path: self.fullPath)
-            }.catch{ error in
-                print(error)
+        var inpuText: UITextField = UITextField()
+        let msgAlert = UIAlertController(title: nil, message: "请输入文件夹名称", preferredStyle: UIAlertController.Style.alert)
+        let ok = UIAlertAction(title: "确定", style: .default) { action in
+            if inpuText.text == "" {
+                HiveHud.show(self.view, "名称不能为空", 1.5)
+            }else {
+                self.dHandle?.createDirectory(withName: inpuText.text!).done{ directory in
+                    HiveHud.show(self.view, "创建成功", 1.5)
+                    let item = HiveModel()
+                    item.name = inpuText.text!
+                    item.type = "directory"
+                    item.itemId = directory.directoryId
+                    item.size = "0"
+                    self.dataSource.insert(item, at: 0)
+                    self.mainTableView.reloadData()
+                    }.catch{ error in
+                        print(error)
+                        HiveHud.show(self.view, "同名文件已经存在", 1.5)
+                }
+            }
         }
+        let cancle = UIAlertAction(title: "取消", style: .cancel) { action in
+        }
+
+        msgAlert.addTextField { textFiled in
+            inpuText = textFiled
+            inpuText.placeholder = "请输入文件夹名称"
+        }
+        msgAlert.addAction(ok)
+        msgAlert.addAction(cancle)
+        msgAlert.modalPresentationStyle = UIModalPresentationStyle.popover
+        self.present(msgAlert, animated: true, completion: nil)
     }
 
     //    MARK: Notification action

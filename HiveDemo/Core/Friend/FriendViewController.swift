@@ -50,6 +50,8 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             catch {
                 print(error)
             }
+        }else {
+            HiveHud.show(self.view, "carrier is not ready", 1.5)
         }
     }
 
