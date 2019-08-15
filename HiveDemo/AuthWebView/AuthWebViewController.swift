@@ -71,15 +71,6 @@ public class AuthWebViewController: UIViewController, WKUIDelegate, WKNavigation
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         decisionHandler(WKNavigationActionPolicy.allow)
         if (navigationAction.request.url?.absoluteString.hasPrefix(REDIRECT_URI))! {
-//            if let handle = responseHandle {
-//                handle(navigationAction.request.url, nil)
-//            }
-//                let rootViewController = UIApplication.shared.keyWindow?.rootViewController
-//                rootViewController!.dismiss(animated: true, completion: nil)
-//            self.presentingViewController?.dismiss(animated: true, completion: nil)
-//            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-
-//            self.dismiss(animated: true, completion: nil)
         }
     }
     

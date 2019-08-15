@@ -13,7 +13,6 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var mainTableView: UITableView!
     var friendList: Array<CarrierFriendInfo> = []
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = ColorHex("#f7f3f3")
@@ -40,7 +39,8 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
-
+    
+    //  MARK: - Request
     func getFriendList() {
         if (Carrier.sharedInstance()?.isReady())! {
             do {
@@ -53,6 +53,7 @@ class FriendViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
+    //  MARK: - tableView delegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friendList.count
     }

@@ -39,13 +39,13 @@ class HomeViewController: UIViewController {
         creatUI()
         addNotification()
     }
-    
+    //    Mark: - Notification addObserver
     func addNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(showAddFriendNotification(sender:)), name: .showAddFriend, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showFriendListNotification(sender:)), name: .showFriendList, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showActiveHiveListNotification(_ :)), name: .showActiveHiveList, object: nil)
     }
-
+    //   MARK: - UI
     func createLeftItem() {
         let img = UIImage(named: "user")
         let item = UIBarButtonItem(image: img, style: UIBarButtonItem.Style.plain, target: self, action: #selector(leftList))
@@ -105,7 +105,7 @@ class HomeViewController: UIViewController {
             make.height.equalTo(66)
         }
     }
-
+    //  MARK: - Func
     func skipList(_ type: DriveType, _ animated: Bool) {
         let hiveListVC = HiveListViewController()
         var storeValue = ""

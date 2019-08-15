@@ -29,6 +29,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         requestChaildren(driveType, path: fullPath)
     }
 
+    //    Mark: - Notification addObserver
     func notificationAdded() {
         NotificationCenter.default.addObserver(self, selector: #selector(frientInfoDidChange(_ :)), name: .friendInfoChanged, object: nil)
     }
@@ -67,6 +68,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
 
+    //  MARK: - Request
     func requestChaildren(_ type: DriveType, path: String) {
 
         if path == "/" {
@@ -148,6 +150,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
 
+    //    MARK: - refresh UI
     func getItemInfo() {
         dataSource.enumerated().forEach { (index, item) in
             refreshItem(index, item: item)
@@ -174,7 +177,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                 self.refreshItem(index, item: item)
         }
     }
-    // MARK: refresh
+
     func refreshUI() {
         self.navigationItem.title = path
         self.pathView.containLable.text = fullPath
@@ -213,7 +216,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationController?.pushViewController(newListVC, animated: true)
     }
 
-    // MARK --- action
+    // MARK --- UILongPressGestureRecognizer action
     @objc func longPressGestureAction(_ sender: UILongPressGestureRecognizer) {
 
         guard sender.state == .ended else {
@@ -276,6 +279,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         self.present(sheet, animated: true, completion: nil)
     }
 
+    //  MARK: - Button action
     @objc func creatDirectory() {
 
         dHandle?.createDirectory(withName: "测试添加Directory-1").done{ directory in
@@ -284,7 +288,8 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                 print(error)
         }
     }
-    //    MARK: notification
+
+    //    MARK: Notification action
     @objc func frientInfoDidChange(_ sender: Notification) {
 
     }

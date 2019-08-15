@@ -70,7 +70,8 @@ class LeftViewController: UIViewController {
         self.view.addSubview(stackView)
 
     }
-
+    
+    //MARK: - POST Notification
     @objc func postNotification() {
         NotificationCenter.default.post(name: .showAddFriend, object: nil)
     }

@@ -18,15 +18,15 @@ class HiveManager: Authenticator {
 
     var authWebViewController : AuthWebViewController?
     func requestAuthentication(_ requestURL: String) -> Bool {
-//        let authViewController: AuthWebViewController = AuthWebViewController()
-//        DispatchQueue.main.sync {
-//            let rootViewController: UINavigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
-//            authViewController.definesPresentationContext = true;
-//            authViewController.modalPresentationStyle = .overCurrentContext
-//            rootViewController.topViewController!.present(authViewController, animated: true, completion: nil)
-//            authViewController.loadRequest(requestURL)
-//            self.authWebViewController = authViewController;
-//        }
+        let authViewController: AuthWebViewController = AuthWebViewController()
+        DispatchQueue.main.sync {
+            let rootViewController: UINavigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
+            authViewController.definesPresentationContext = true;
+            authViewController.modalPresentationStyle = .overCurrentContext
+            rootViewController.topViewController!.present(authViewController, animated: true, completion: nil)
+            authViewController.loadRequest(requestURL)
+            self.authWebViewController = authViewController;
+        }
         return true
     }
 
