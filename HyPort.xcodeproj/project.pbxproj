@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		11561224230695CF001516D6 /* ElastosHiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11561222230695C6001516D6 /* ElastosHiveSDK.framework */; };
-		11561225230695CF001516D6 /* ElastosHiveSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11561222230695C6001516D6 /* ElastosHiveSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		11C7286723007AD70078BB80 /* AuthWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C7286623007AD70078BB80 /* AuthWebViewController.swift */; };
 		11E338772303F2370089640E /* HiveHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338762303F2370089640E /* HiveHud.swift */; };
 		11E33884230446650089640E /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E33883230446650089640E /* BaseNavigationController.swift */; };
@@ -61,7 +59,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				11561225230695CF001516D6 /* ElastosHiveSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,7 +66,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		11561222230695C6001516D6 /* ElastosHiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ElastosHiveSDK.framework; sourceTree = "<group>"; };
 		11C7286623007AD70078BB80 /* AuthWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthWebViewController.swift; sourceTree = "<group>"; };
 		11E338762303F2370089640E /* HiveHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveHud.swift; sourceTree = "<group>"; };
 		11E33883230446650089640E /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
@@ -129,7 +125,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2935B33579071ED79D17063 /* Pods_HyPort.framework in Frameworks */,
-				11561224230695CF001516D6 /* ElastosHiveSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +321,6 @@
 		F7B6BF5351F66C32B6456256 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				11561222230695C6001516D6 /* ElastosHiveSDK.framework */,
 				A1AE19FEB568B1388FA10C9B /* Pods_HyPort.framework */,
 			);
 			name = Frameworks;
@@ -555,7 +549,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -610,7 +604,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -633,7 +627,7 @@
 					"$(PROJECT_DIR)/HyPort",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/HyPort/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -661,7 +655,7 @@
 					"$(PROJECT_DIR)/HyPort",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/HyPort/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

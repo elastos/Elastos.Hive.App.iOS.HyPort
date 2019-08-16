@@ -7,6 +7,8 @@
 //
 
 import Foundation
-@_exported import ElastosHiveSDK
+@_exported import Alamofire
+@_exported import Swifter
 @_exported import SnapKit
 @_exported import PromiseKit
+@_exported import ElastosHiveSDK
