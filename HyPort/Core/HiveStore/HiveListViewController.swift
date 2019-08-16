@@ -236,7 +236,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK --- UILongPressGestureRecognizer action
     @objc func longPressGestureAction(_ sender: UILongPressGestureRecognizer) {
 
-        guard sender.state == .ended else {
+        guard sender.state == .changed else {
             return
         }
         let point: CGPoint = sender.location(in: mainTableView)
