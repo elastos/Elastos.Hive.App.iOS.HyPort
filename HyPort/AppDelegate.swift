@@ -14,13 +14,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
         let homeVC = HomeViewController()
         let navVC = BaseNavigationController(rootViewController: homeVC)
         self.window = UIWindow()
         self.window?.rootViewController  = navVC
         self.window?.makeKeyAndVisible()
-        DeviceManager.sharedInstance.start()
+        self.window?.backgroundColor = UIColor.red
+        HiveManager.shareInstance.login(.hiveIPFS)
+
+        let presentationStyle = SideMenuPresentationStyle.menuSlideIn
+        presentationStyle.menuStartAlpha = 1
+        presentationStyle.presentingScaleFactor = 1
+        presentationStyle.backgroundColor = UIColor.clear
+
+        var settings = SideMenuSettings()
+        settings.presentationStyle = presentationStyle
+        settings.menuWidth = 300
+//        settings.blurEffectStyle = UIBlurEffect.Style.light
+        settings.statusBarEndAlpha = 1
+
+        let menu = SideMenuNavigationController(rootViewController: LeftViewController())
+        menu.settings = settings
+        menu.leftSide = true
+        menu.view.frame = CGRect(x: 0, y: 0, width: 200, height: UIScreen.main.bounds.size.height);
+//        menu.view.backgroundColor = UIColor.red
+        menu.isNavigationBarHidden = true
+//        menu.statusBarEndAlpha = 1
+
+        SideMenuManager.default.leftMenuNavigationController = menu
+        SideMenuManager.default.addPanGestureToPresent(toView: navVC.navigationBar)
+        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: navVC.view)
+        menu.settings = settings
+        
         return true
     }
 

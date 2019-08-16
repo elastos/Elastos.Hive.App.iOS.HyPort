@@ -12,8 +12,8 @@ class FilePathView: UIView, UIScrollViewDelegate {
 
     var scrollView: UIScrollView!
     var stackView: UIStackView!
+    var icon: UIImageView!
     var containLable: UILabel!
-    var button: UIButton!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,38 +35,29 @@ class FilePathView: UIView, UIScrollViewDelegate {
         stackView.axis = .horizontal
         scrollView.addSubview(stackView)
 
+        icon = UIImageView()
+        icon.image = UIImage(named: "folder")
+        self.addSubview(icon)
+        icon.snp.makeConstraints { make in
+            make.left.equalToSuperview()
+            make.width.height.equalTo(22)
+            make.centerY.equalToSuperview()
+        }
+        
         containLable = UILabel()
         containLable.text = "/"
         containLable.font = UIFont.systemFont(ofSize: 15)
         stackView.addArrangedSubview(containLable)
 
-        button = UIButton()
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
-        button.setTitle("new", for: .normal)
-        button.titleShadowColor(for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
-        button.backgroundColor = UIColor.white
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.gray.cgColor
-        button.layer.cornerRadius = 5
-        button.layer.masksToBounds = true
-        self.addSubview(button)
-
         scrollView.snp.makeConstraints { (make) in
-            make.top.left.bottom.equalToSuperview()
-            make.right.equalTo(button.snp_left).offset(-12)
+            make.top.bottom.equalToSuperview()
+            make.right.equalToSuperview().offset(-12)
+            make.left.equalToSuperview().offset(34)
         }
 
         stackView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
             make.height.equalTo(44)
-        }
-
-        button.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.height.equalTo(25)
-            make.width.equalTo(40)
-            make.right.equalToSuperview()
         }
     }
 }

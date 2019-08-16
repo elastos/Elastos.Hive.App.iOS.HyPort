@@ -12,18 +12,12 @@ import UIKit
 class HomeViewController: UIViewController {
 
     var leftVC: LeftViewController = LeftViewController()
-    var draw: Drawer!
     var driveType: DriveType?
     var mainTable: UITableView!
     var ipfsDrive: DriveView!
     var oneDrive: DriveView!
     var driveStackView: UIStackView!
     var line: UIView!
-
-    var myCard: DriveView!
-    var addFriend: DriveView!
-    var myFriend: DriveView!
-    var funStackView: UIStackView!
 
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -34,16 +28,15 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = "Hive"
         self.view.backgroundColor = ColorHex("#f7f3f3")
-        draw = Drawer(self.navigationController!, leftVC)
         createLeftItem()
         creatUI()
         addNotification()
     }
+
     //    Mark: - Notification addObserver
     func addNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(showAddFriendNotification(sender:)), name: .showAddFriend, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(showFriendListNotification(sender:)), name: .showFriendList, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(showActiveHiveListNotification(_ :)), name: .showActiveHiveList, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showIpfsDriveNotification(_ :)), name: .showIpfsDrive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showOneDriveNotification(_ :)), name: .showOneDrive, object: nil)
     }
     //   MARK: - UI
     func createLeftItem() {
@@ -77,32 +70,6 @@ class HomeViewController: UIViewController {
             make.right.equalToSuperview()
             make.height.equalTo(2)
             make.top.equalTo(driveStackView.snp_bottom).offset(40)
-        }
-
-        myCard = DriveView()
-        myCard.button.addTarget(self, action: #selector(qrcode), for: UIControl.Event.touchUpInside)
-        myCard.nameLable.text = "my card"
-
-        addFriend = DriveView()
-        addFriend.button.addTarget(self, action: #selector(addFriendAction), for: UIControl.Event.touchUpInside)
-        addFriend.nameLable.text = "add Friend"
-
-        myFriend = DriveView()
-        myFriend.button.addTarget(self, action: #selector(friendList), for: UIControl.Event.touchUpInside)
-        myFriend.nameLable.text = "my Friend"
-
-        funStackView = UIStackView(arrangedSubviews: [myCard, addFriend, myFriend])
-        funStackView.axis = NSLayoutConstraint.Axis.horizontal
-        funStackView.alignment = UIStackView.Alignment.fill
-        funStackView.distribution = UIStackView.Distribution.fillEqually
-        funStackView.spacing = 20
-        self.view.addSubview(funStackView)
-
-        funStackView.snp.makeConstraints { make in
-            make.top.equalTo(line.snp_bottom).offset(40)
-            make.right.equalToSuperview().offset(-20)
-            make.left.equalToSuperview().offset(20)
-            make.height.equalTo(66)
         }
     }
     //  MARK: - Func
@@ -142,49 +109,53 @@ class HomeViewController: UIViewController {
         }
     }
 
+    func getTopMostViewController() -> UIViewController? {
+        var topMostViewController = UIApplication.shared.keyWindow?.rootViewController
+
+        while let presentedViewController = topMostViewController?.presentedViewController {
+            topMostViewController = presentedViewController
+        }
+
+        return topMostViewController
+    }
+
     @objc func leftList() {
-        draw.show()
-    }
 
-    @objc func addFriendAction() {
-        let scanVC = ScanViewController()
-        self.navigationController!.show(scanVC, sender: nil)
-    }
+        let presentationStyle = SideMenuPresentationStyle.menuSlideIn
+//        presentationStyle.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background"))
+        presentationStyle.menuStartAlpha = 1.0
+        presentationStyle.menuOnTop = true
+//        presentationStyle.menuScaleFactor = CGFloat(menuScaleFactorSlider.value)
+//        presentationStyle.onTopShadowOpacity = shadowOpacitySlider.value
+//        presentationStyle.presentingEndAlpha = 0
+        presentationStyle.presentingScaleFactor = 1
+        presentationStyle.backgroundColor = UIColor.clear
 
-    @objc func qrcode() {
-        let myCardVC = MyCardViewController()
-        self.navigationController?.pushViewController(myCardVC, animated: true)
-    }
+        var settings = SideMenuSettings()
+        settings.presentationStyle = presentationStyle
+        settings.menuWidth = 300
+//        settings.blurEffectStyle = UIBlurEffect.Style.light
+//        settings.statusBarEndAlpha = 0
 
-    @objc func friendList() {
-        draw.close()
-        let myFriendVC = FriendViewController()
-        self.navigationController?.pushViewController(myFriendVC, animated: true)
+        let menu = SideMenuNavigationController(rootViewController: LeftViewController())
+        menu.settings = settings
+        menu.leftSide = true
+        menu.view.frame = CGRect(x: 0, y: 0, width: 200, height: UIScreen.main.bounds.size.height);
+        menu.isNavigationBarHidden = true
+
+        let vc = self.getTopMostViewController()
+        vc!.present(menu, animated: true, completion: nil)
+
     }
 
     //    MARK: Notification Action
-    @objc func showAddFriendNotification(sender: Notification) {
-        draw.close()
-        let scanVC = ScanViewController()
-        self.navigationController?.pushViewController(scanVC, animated: false)
+    @objc func showIpfsDriveNotification(_ sender: Notification) {
+        self.dismiss(animated: true, completion: nil)
+        skipList(.hiveIPFS, false)
     }
-
-    @objc func showFriendListNotification(sender: Notification) {
-        draw.close()
-        let myFriendVC = FriendViewController()
-        self.navigationController?.pushViewController(myFriendVC, animated: false)
-    }
-
-    @objc func showActiveHiveListNotification(_ sender: Notification) {
-        draw.close()
-        let typeString = sender.object as! String
-        var type: DriveType = .hiveIPFS
-        if typeString == "oneDrive" {
-            type = .oneDrive
-        }else if typeString == "hiveIPFS" {
-            type = .hiveIPFS
-        }
-        skipList(type, false)
+    @objc func showOneDriveNotification(_ sender: Notification) {
+        self.dismiss(animated: true, completion: nil)
+        skipList(.oneDrive, false)
     }
 
 }

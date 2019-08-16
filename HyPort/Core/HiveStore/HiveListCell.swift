@@ -17,7 +17,7 @@ class HiveListCell: UITableViewCell {
         didSet{
             nameLable?.text = model?.name
             if (model?.type == "file" ) {
-                icon?.image = UIImage.init(named: "files")
+                icon?.image = UIImage.init(named: "file")
                 row?.isHidden = true
             }
             else {

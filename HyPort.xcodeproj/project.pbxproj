@@ -7,37 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11561224230695CF001516D6 /* ElastosHiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11561222230695C6001516D6 /* ElastosHiveSDK.framework */; };
+		11561225230695CF001516D6 /* ElastosHiveSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11561222230695C6001516D6 /* ElastosHiveSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		11C7286723007AD70078BB80 /* AuthWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C7286623007AD70078BB80 /* AuthWebViewController.swift */; };
 		11E338772303F2370089640E /* HiveHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338762303F2370089640E /* HiveHud.swift */; };
 		11E33884230446650089640E /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E33883230446650089640E /* BaseNavigationController.swift */; };
-		11E338B62305300D0089640E /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338B42305300D0089640E /* DeviceManager.swift */; };
 		11E338B72305300D0089640E /* HiveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338B52305300D0089640E /* HiveManager.swift */; };
 		11E338BB2305302D0089640E /* HiveListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338B82305302D0089640E /* HiveListCell.swift */; };
 		11E338BC2305302D0089640E /* HiveListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338B92305302D0089640E /* HiveListViewController.swift */; };
 		11E338BD2305302D0089640E /* HiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338BA2305302D0089640E /* HiveModel.swift */; };
-		11E338C0230532F20089640E /* ElastosHiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E338BE230532EB0089640E /* ElastosHiveSDK.framework */; };
-		11E338C1230532F20089640E /* ElastosHiveSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11E338BE230532EB0089640E /* ElastosHiveSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		11E338D023058F120089640E /* Print.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338C323058F110089640E /* Print.swift */; };
+		11E338D123058F120089640E /* Initializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338C423058F110089640E /* Initializable.swift */; };
+		11E338D223058F120089640E /* SideMenuInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338C523058F110089640E /* SideMenuInteractionController.swift */; };
+		11E338D423058F120089640E /* SideMenuPresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338C723058F110089640E /* SideMenuPresentationStyle.swift */; };
+		11E338D523058F120089640E /* Protected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338C823058F110089640E /* Protected.swift */; };
+		11E338D623058F120089640E /* SideMenuPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338C923058F110089640E /* SideMenuPresentationController.swift */; };
+		11E338D723058F120089640E /* SideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338CA23058F110089640E /* SideMenuManager.swift */; };
+		11E338D823058F120089640E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338CB23058F110089640E /* Extensions.swift */; };
+		11E338D923058F120089640E /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338CC23058F110089640E /* Models.swift */; };
+		11E338DA23058F120089640E /* SideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338CD23058F110089640E /* SideMenuNavigationController.swift */; };
+		11E338DB23058F120089640E /* SideMenuTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338CE23058F110089640E /* SideMenuTransitionController.swift */; };
+		11E338DC23058F120089640E /* UITableViewVibrantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338CF23058F110089640E /* UITableViewVibrantCell.swift */; };
+		11E338EC2305AF0A0089640E /* UIView+Draggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338E52305AF0A0089640E /* UIView+Draggable.swift */; };
+		11E338ED2305AF0A0089640E /* SuspendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338E62305AF0A0089640E /* SuspendViewController.swift */; };
+		11E338EE2305AF0A0089640E /* Suspend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338E72305AF0A0089640E /* Suspend.swift */; };
+		11E338EF2305AF0A0089640E /* SuspendDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338E82305AF0A0089640E /* SuspendDelegate.swift */; };
+		11E338F9230676510089640E /* Counst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338F82306764E0089640E /* Counst.swift */; };
+		11E338FB23067A150089640E /* SuspendWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338FA23067A150089640E /* SuspendWindow.swift */; };
+		11E338FD23067A960089640E /* SuspendManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338FC23067A960089640E /* SuspendManager.swift */; };
+		11E338FF23067B220089640E /* SuspendItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338FE23067B220089640E /* SuspendItem.swift */; };
 		11ED67CE22FBD037004C17D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ED67CD22FBD037004C17D0 /* AppDelegate.swift */; };
 		11ED67D022FBD037004C17D0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ED67CF22FBD037004C17D0 /* HomeViewController.swift */; };
 		11ED67D522FBD03C004C17D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11ED67D422FBD03C004C17D0 /* Assets.xcassets */; };
 		11ED67D822FBD03C004C17D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11ED67D622FBD03C004C17D0 /* LaunchScreen.storyboard */; };
 		11ED67E322FBE04C004C17D0 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ED67E222FBE04C004C17D0 /* LeftViewController.swift */; };
-		11ED67E522FBE4D2004C17D0 /* Drawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ED67E422FBE4D2004C17D0 /* Drawer.swift */; };
-		11ED67E722FBE526004C17D0 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ED67E622FBE526004C17D0 /* Animator.swift */; };
-		11ED67E922FBE554004C17D0 /* Counst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ED67E822FBE554004C17D0 /* Counst.swift */; };
 		11ED67EC22FBF8FA004C17D0 /* NormalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ED67EB22FBF8FA004C17D0 /* NormalView.swift */; };
 		11ED67EE22FC1100004C17D0 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ED67ED22FC10FF004C17D0 /* HeaderView.swift */; };
 		11ED67F322FC223E004C17D0 /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ED67F222FC223E004C17D0 /* SwitchView.swift */; };
 		11ED67F522FC6F95004C17D0 /* DriveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ED67F422FC6F95004C17D0 /* DriveView.swift */; };
-		11ED67FC22FD2493004C17D0 /* ScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11ED67F922FD2493004C17D0 /* ScanViewController.xib */; };
-		11ED67FD22FD2493004C17D0 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11ED67FA22FD2493004C17D0 /* ScanViewController.m */; };
-		11ED680422FD27A7004C17D0 /* MyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ED680322FD27A7004C17D0 /* MyCardViewController.swift */; };
 		11ED680A22FD29AE004C17D0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 11ED680622FD29AE004C17D0 /* MBProgressHUD.m */; };
 		11ED680B22FD29AE004C17D0 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 11ED680722FD29AE004C17D0 /* LICENSE */; };
 		11ED680C22FD29AE004C17D0 /* README.mdown in Resources */ = {isa = PBXBuildFile; fileRef = 11ED680922FD29AE004C17D0 /* README.mdown */; };
 		11ED681122FD2AFA004C17D0 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ED681022FD2AFA004C17D0 /* NetworkReachabilityManager.swift */; };
-		11ED681D22FD658D004C17D0 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ED681C22FD658D004C17D0 /* FriendViewController.swift */; };
-		11ED681F22FD65D5004C17D0 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ED681E22FD65D5004C17D0 /* FriendCell.swift */; };
 		11ED682622FEF3A7004C17D0 /* FilePathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ED682522FEF3A7004C17D0 /* FilePathView.swift */; };
 		11ED682822FF0DCB004C17D0 /* Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ED682722FF0DCB004C17D0 /* Hive.swift */; };
 		C2935B33579071ED79D17063 /* Pods_HyPort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1AE19FEB568B1388FA10C9B /* Pods_HyPort.framework */; };
@@ -50,7 +61,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				11E338C1230532F20089640E /* ElastosHiveSDK.framework in Embed Frameworks */,
+				11561225230695CF001516D6 /* ElastosHiveSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,15 +69,34 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		11561222230695C6001516D6 /* ElastosHiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ElastosHiveSDK.framework; sourceTree = "<group>"; };
 		11C7286623007AD70078BB80 /* AuthWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthWebViewController.swift; sourceTree = "<group>"; };
 		11E338762303F2370089640E /* HiveHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveHud.swift; sourceTree = "<group>"; };
 		11E33883230446650089640E /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
-		11E338B42305300D0089640E /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeviceManager.swift; path = HyPort/Core/Manager/DeviceManager.swift; sourceTree = SOURCE_ROOT; };
 		11E338B52305300D0089640E /* HiveManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HiveManager.swift; path = HyPort/Core/Manager/HiveManager.swift; sourceTree = SOURCE_ROOT; };
 		11E338B82305302D0089640E /* HiveListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HiveListCell.swift; path = HyPort/Core/HiveStore/HiveListCell.swift; sourceTree = SOURCE_ROOT; };
 		11E338B92305302D0089640E /* HiveListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HiveListViewController.swift; path = HyPort/Core/HiveStore/HiveListViewController.swift; sourceTree = SOURCE_ROOT; };
 		11E338BA2305302D0089640E /* HiveModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HiveModel.swift; path = HyPort/Core/HiveStore/HiveModel.swift; sourceTree = SOURCE_ROOT; };
-		11E338BE230532EB0089640E /* ElastosHiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ElastosHiveSDK.framework; sourceTree = "<group>"; };
+		11E338C323058F110089640E /* Print.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Print.swift; sourceTree = "<group>"; };
+		11E338C423058F110089640E /* Initializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Initializable.swift; sourceTree = "<group>"; };
+		11E338C523058F110089640E /* SideMenuInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuInteractionController.swift; sourceTree = "<group>"; };
+		11E338C723058F110089640E /* SideMenuPresentationStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuPresentationStyle.swift; sourceTree = "<group>"; };
+		11E338C823058F110089640E /* Protected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protected.swift; sourceTree = "<group>"; };
+		11E338C923058F110089640E /* SideMenuPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuPresentationController.swift; sourceTree = "<group>"; };
+		11E338CA23058F110089640E /* SideMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuManager.swift; sourceTree = "<group>"; };
+		11E338CB23058F110089640E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		11E338CC23058F110089640E /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		11E338CD23058F110089640E /* SideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuNavigationController.swift; sourceTree = "<group>"; };
+		11E338CE23058F110089640E /* SideMenuTransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTransitionController.swift; sourceTree = "<group>"; };
+		11E338CF23058F110089640E /* UITableViewVibrantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewVibrantCell.swift; sourceTree = "<group>"; };
+		11E338E52305AF0A0089640E /* UIView+Draggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Draggable.swift"; sourceTree = "<group>"; };
+		11E338E62305AF0A0089640E /* SuspendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuspendViewController.swift; sourceTree = "<group>"; };
+		11E338E72305AF0A0089640E /* Suspend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suspend.swift; sourceTree = "<group>"; };
+		11E338E82305AF0A0089640E /* SuspendDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuspendDelegate.swift; sourceTree = "<group>"; };
+		11E338F82306764E0089640E /* Counst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Counst.swift; sourceTree = "<group>"; };
+		11E338FA23067A150089640E /* SuspendWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuspendWindow.swift; sourceTree = "<group>"; };
+		11E338FC23067A960089640E /* SuspendManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuspendManager.swift; sourceTree = "<group>"; };
+		11E338FE23067B220089640E /* SuspendItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuspendItem.swift; sourceTree = "<group>"; };
 		11ED67CA22FBD037004C17D0 /* HyPort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HyPort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11ED67CD22FBD037004C17D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11ED67CF22FBD037004C17D0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -74,25 +104,16 @@
 		11ED67D722FBD03C004C17D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11ED67D922FBD03C004C17D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11ED67E222FBE04C004C17D0 /* LeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
-		11ED67E422FBE4D2004C17D0 /* Drawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawer.swift; sourceTree = "<group>"; };
-		11ED67E622FBE526004C17D0 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
-		11ED67E822FBE554004C17D0 /* Counst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counst.swift; sourceTree = "<group>"; };
 		11ED67EB22FBF8FA004C17D0 /* NormalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalView.swift; sourceTree = "<group>"; };
 		11ED67ED22FC10FF004C17D0 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		11ED67F222FC223E004C17D0 /* SwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
 		11ED67F422FC6F95004C17D0 /* DriveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveView.swift; sourceTree = "<group>"; };
-		11ED67F922FD2493004C17D0 /* ScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanViewController.xib; sourceTree = "<group>"; };
-		11ED67FA22FD2493004C17D0 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
-		11ED67FB22FD2493004C17D0 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
 		11ED680222FD2685004C17D0 /* HyPort-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HyPort-Bridging-Header.h"; sourceTree = "<group>"; };
-		11ED680322FD27A7004C17D0 /* MyCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardViewController.swift; sourceTree = "<group>"; };
 		11ED680622FD29AE004C17D0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		11ED680722FD29AE004C17D0 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		11ED680822FD29AE004C17D0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		11ED680922FD29AE004C17D0 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
 		11ED681022FD2AFA004C17D0 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityManager.swift; sourceTree = "<group>"; };
-		11ED681C22FD658D004C17D0 /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
-		11ED681E22FD65D5004C17D0 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		11ED682522FEF3A7004C17D0 /* FilePathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePathView.swift; sourceTree = "<group>"; };
 		11ED682722FF0DCB004C17D0 /* Hive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hive.swift; sourceTree = "<group>"; };
 		213921B47BDD13CB7CE81FC9 /* Pods-HyPort.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyPort.release.xcconfig"; path = "Target Support Files/Pods-HyPort/Pods-HyPort.release.xcconfig"; sourceTree = "<group>"; };
@@ -108,22 +129,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2935B33579071ED79D17063 /* Pods_HyPort.framework in Frameworks */,
-				11E338C0230532F20089640E /* ElastosHiveSDK.framework in Frameworks */,
+				11561224230695CF001516D6 /* ElastosHiveSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		111E0C3F2302880F00167953 /* HiveStore */ = {
+		111E0C3F2302880F00167953 /* Hive */ = {
 			isa = PBXGroup;
 			children = (
-				11E338B82305302D0089640E /* HiveListCell.swift */,
 				11E338B92305302D0089640E /* HiveListViewController.swift */,
+				11E338B82305302D0089640E /* HiveListCell.swift */,
 				11E338BA2305302D0089640E /* HiveModel.swift */,
 			);
-			name = HiveStore;
-			path = HyPort/HiveStore;
+			name = Hive;
+			path = HyPort/Hive;
 			sourceTree = SOURCE_ROOT;
 		};
 		11C7286523007ACF0078BB80 /* AuthWebView */ = {
@@ -140,6 +161,39 @@
 				11E33883230446650089640E /* BaseNavigationController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		11E338C223058F110089640E /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				11E338C323058F110089640E /* Print.swift */,
+				11E338C423058F110089640E /* Initializable.swift */,
+				11E338C523058F110089640E /* SideMenuInteractionController.swift */,
+				11E338C723058F110089640E /* SideMenuPresentationStyle.swift */,
+				11E338C823058F110089640E /* Protected.swift */,
+				11E338C923058F110089640E /* SideMenuPresentationController.swift */,
+				11E338CA23058F110089640E /* SideMenuManager.swift */,
+				11E338CB23058F110089640E /* Extensions.swift */,
+				11E338CC23058F110089640E /* Models.swift */,
+				11E338CD23058F110089640E /* SideMenuNavigationController.swift */,
+				11E338CE23058F110089640E /* SideMenuTransitionController.swift */,
+				11E338CF23058F110089640E /* UITableViewVibrantCell.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		11E338E02305AF0A0089640E /* Suspend */ = {
+			isa = PBXGroup;
+			children = (
+				11E338FA23067A150089640E /* SuspendWindow.swift */,
+				11E338FC23067A960089640E /* SuspendManager.swift */,
+				11E338FE23067B220089640E /* SuspendItem.swift */,
+				11E338E52305AF0A0089640E /* UIView+Draggable.swift */,
+				11E338E62305AF0A0089640E /* SuspendViewController.swift */,
+				11E338E72305AF0A0089640E /* Suspend.swift */,
+				11E338E82305AF0A0089640E /* SuspendDelegate.swift */,
+			);
+			path = Suspend;
 			sourceTree = "<group>";
 		};
 		11ED67C122FBD036004C17D0 = {
@@ -163,11 +217,11 @@
 		11ED67CC22FBD037004C17D0 /* HyPort */ = {
 			isa = PBXGroup;
 			children = (
+				11E338E02305AF0A0089640E /* Suspend */,
 				11E33880230445570089640E /* Base */,
 				11C7286523007ACF0078BB80 /* AuthWebView */,
 				11ED67F722FD2482004C17D0 /* Vendors */,
 				11ED67EA22FBF8DC004C17D0 /* CommonView */,
-				11ED67DF22FBDA3B004C17D0 /* Drawer */,
 				11ED681A22FD60FF004C17D0 /* Core */,
 				11ED67CD22FBD037004C17D0 /* AppDelegate.swift */,
 				11ED680222FD2685004C17D0 /* HyPort-Bridging-Header.h */,
@@ -179,19 +233,10 @@
 			path = HyPort;
 			sourceTree = "<group>";
 		};
-		11ED67DF22FBDA3B004C17D0 /* Drawer */ = {
-			isa = PBXGroup;
-			children = (
-				11ED67E422FBE4D2004C17D0 /* Drawer.swift */,
-				11ED67E622FBE526004C17D0 /* Animator.swift */,
-				11ED67E822FBE554004C17D0 /* Counst.swift */,
-			);
-			path = Drawer;
-			sourceTree = "<group>";
-		};
 		11ED67EA22FBF8DC004C17D0 /* CommonView */ = {
 			isa = PBXGroup;
 			children = (
+				11E338F82306764E0089640E /* Counst.swift */,
 				11ED67EB22FBF8FA004C17D0 /* NormalView.swift */,
 				11ED67ED22FC10FF004C17D0 /* HeaderView.swift */,
 				11ED67F222FC223E004C17D0 /* SwitchView.swift */,
@@ -205,21 +250,11 @@
 		11ED67F722FD2482004C17D0 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				11E338C223058F110089640E /* SideMenu */,
 				11ED680F22FD2AFA004C17D0 /* NetworkReachability */,
 				11ED680522FD29AE004C17D0 /* MBProgressHUD */,
-				11ED67F822FD2493004C17D0 /* Scan */,
 			);
 			path = Vendors;
-			sourceTree = "<group>";
-		};
-		11ED67F822FD2493004C17D0 /* Scan */ = {
-			isa = PBXGroup;
-			children = (
-				11ED67F922FD2493004C17D0 /* ScanViewController.xib */,
-				11ED67FA22FD2493004C17D0 /* ScanViewController.m */,
-				11ED67FB22FD2493004C17D0 /* ScanViewController.h */,
-			);
-			path = Scan;
 			sourceTree = "<group>";
 		};
 		11ED680522FD29AE004C17D0 /* MBProgressHUD */ = {
@@ -241,22 +276,12 @@
 			path = NetworkReachability;
 			sourceTree = "<group>";
 		};
-		11ED681822FD6097004C17D0 /* Left */ = {
+		11ED681822FD6097004C17D0 /* SideMune */ = {
 			isa = PBXGroup;
 			children = (
 				11ED67E222FBE04C004C17D0 /* LeftViewController.swift */,
-				11ED680322FD27A7004C17D0 /* MyCardViewController.swift */,
 			);
-			path = Left;
-			sourceTree = "<group>";
-		};
-		11ED681922FD60A9004C17D0 /* Friend */ = {
-			isa = PBXGroup;
-			children = (
-				11ED681C22FD658D004C17D0 /* FriendViewController.swift */,
-				11ED681E22FD65D5004C17D0 /* FriendCell.swift */,
-			);
-			path = Friend;
+			path = SideMune;
 			sourceTree = "<group>";
 		};
 		11ED681A22FD60FF004C17D0 /* Core */ = {
@@ -264,9 +289,8 @@
 			children = (
 				11ED682C22FF22E8004C17D0 /* Manager */,
 				11ED681B22FD613A004C17D0 /* Home */,
-				11ED681822FD6097004C17D0 /* Left */,
-				11ED681922FD60A9004C17D0 /* Friend */,
-				111E0C3F2302880F00167953 /* HiveStore */,
+				11ED681822FD6097004C17D0 /* SideMune */,
+				111E0C3F2302880F00167953 /* Hive */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -282,7 +306,6 @@
 		11ED682C22FF22E8004C17D0 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				11E338B42305300D0089640E /* DeviceManager.swift */,
 				11E338B52305300D0089640E /* HiveManager.swift */,
 			);
 			name = Manager;
@@ -303,7 +326,7 @@
 		F7B6BF5351F66C32B6456256 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				11E338BE230532EB0089640E /* ElastosHiveSDK.framework */,
+				11561222230695C6001516D6 /* ElastosHiveSDK.framework */,
 				A1AE19FEB568B1388FA10C9B /* Pods_HyPort.framework */,
 			);
 			name = Frameworks;
@@ -373,7 +396,6 @@
 				11ED67D822FBD03C004C17D0 /* LaunchScreen.storyboard in Resources */,
 				11ED67D522FBD03C004C17D0 /* Assets.xcassets in Resources */,
 				11ED680C22FD29AE004C17D0 /* README.mdown in Resources */,
-				11ED67FC22FD2493004C17D0 /* ScanViewController.xib in Resources */,
 				11ED680B22FD29AE004C17D0 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,32 +449,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11E338D223058F120089640E /* SideMenuInteractionController.swift in Sources */,
 				11E33884230446650089640E /* BaseNavigationController.swift in Sources */,
 				11E338BC2305302D0089640E /* HiveListViewController.swift in Sources */,
-				11ED67E722FBE526004C17D0 /* Animator.swift in Sources */,
-				11ED681D22FD658D004C17D0 /* FriendViewController.swift in Sources */,
 				11ED67EC22FBF8FA004C17D0 /* NormalView.swift in Sources */,
 				11C7286723007AD70078BB80 /* AuthWebViewController.swift in Sources */,
-				11ED67E522FBE4D2004C17D0 /* Drawer.swift in Sources */,
+				11E338DC23058F120089640E /* UITableViewVibrantCell.swift in Sources */,
 				11E338BD2305302D0089640E /* HiveModel.swift in Sources */,
 				11E338772303F2370089640E /* HiveHud.swift in Sources */,
-				11E338B62305300D0089640E /* DeviceManager.swift in Sources */,
+				11E338DB23058F120089640E /* SideMenuTransitionController.swift in Sources */,
+				11E338EF2305AF0A0089640E /* SuspendDelegate.swift in Sources */,
+				11E338EC2305AF0A0089640E /* UIView+Draggable.swift in Sources */,
+				11E338FF23067B220089640E /* SuspendItem.swift in Sources */,
+				11E338D623058F120089640E /* SideMenuPresentationController.swift in Sources */,
+				11E338FD23067A960089640E /* SuspendManager.swift in Sources */,
 				11ED682622FEF3A7004C17D0 /* FilePathView.swift in Sources */,
-				11ED67E922FBE554004C17D0 /* Counst.swift in Sources */,
-				11ED680422FD27A7004C17D0 /* MyCardViewController.swift in Sources */,
+				11E338D923058F120089640E /* Models.swift in Sources */,
 				11ED67E322FBE04C004C17D0 /* LeftViewController.swift in Sources */,
+				11E338D423058F120089640E /* SideMenuPresentationStyle.swift in Sources */,
 				11E338B72305300D0089640E /* HiveManager.swift in Sources */,
 				11E338BB2305302D0089640E /* HiveListCell.swift in Sources */,
-				11ED67FD22FD2493004C17D0 /* ScanViewController.m in Sources */,
+				11E338D823058F120089640E /* Extensions.swift in Sources */,
+				11E338D723058F120089640E /* SideMenuManager.swift in Sources */,
+				11E338D523058F120089640E /* Protected.swift in Sources */,
 				11ED67F522FC6F95004C17D0 /* DriveView.swift in Sources */,
 				11ED67D022FBD037004C17D0 /* HomeViewController.swift in Sources */,
 				11ED681122FD2AFA004C17D0 /* NetworkReachabilityManager.swift in Sources */,
 				11ED680A22FD29AE004C17D0 /* MBProgressHUD.m in Sources */,
 				11ED67CE22FBD037004C17D0 /* AppDelegate.swift in Sources */,
 				11ED67EE22FC1100004C17D0 /* HeaderView.swift in Sources */,
+				11E338F9230676510089640E /* Counst.swift in Sources */,
+				11E338DA23058F120089640E /* SideMenuNavigationController.swift in Sources */,
+				11E338EE2305AF0A0089640E /* Suspend.swift in Sources */,
 				11ED67F322FC223E004C17D0 /* SwitchView.swift in Sources */,
-				11ED681F22FD65D5004C17D0 /* FriendCell.swift in Sources */,
+				11E338D023058F120089640E /* Print.swift in Sources */,
 				11ED682822FF0DCB004C17D0 /* Hive.swift in Sources */,
+				11E338D123058F120089640E /* Initializable.swift in Sources */,
+				11E338FB23067A150089640E /* SuspendWindow.swift in Sources */,
+				11E338ED2305AF0A0089640E /* SuspendViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

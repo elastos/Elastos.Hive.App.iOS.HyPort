@@ -8,7 +8,7 @@ target 'HyPort' do
   # Pods for HyPort
       pod 'SnapKit', '~> 4.0.0'
       pod 'QRCode', '~> 2.0'
-      pod 'ElastosCarrierSDK', '5.3.3'
+      # pod 'ElastosCarrierSDK', '5.3.3'
       pod 'Swifter', '~> 1.4.6'
       pod 'Alamofire'
       pod 'PromiseKit'

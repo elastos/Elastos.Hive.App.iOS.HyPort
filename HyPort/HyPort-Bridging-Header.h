@@ -3,4 +3,3 @@
 //
 
 #import "MBProgressHUD.h"
-#import "ScanViewController.h"

@@ -10,7 +10,7 @@ import UIKit
 
 /// The list page
 
-class HiveListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HiveListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SuspendDelegate {
 
     var pathView: FilePathView!
     var mainTableView: UITableView!
@@ -21,24 +21,22 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
     var dataSource: Array<HiveModel> = []
     var dHandle: HiveDirectoryHandle?
     var fHandle: HiveFileHandle?
+    var suspend: Suspend!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = ColorHex("#f7f3f3")
         creatUI()
+        layoutSuspend()
         requestChaildren(driveType, path: fullPath)
-    }
-
-    //    Mark: - Notification addObserver
-    func notificationAdded() {
-        NotificationCenter.default.addObserver(self, selector: #selector(frientInfoDidChange(_ :)), name: .friendInfoChanged, object: nil)
     }
 
     func creatUI() {
 
         pathView = FilePathView()
         self.view.backgroundColor = ColorHex("#f7f3f3")
-        pathView.button.addTarget(self, action: #selector(creatDirectory), for: UIControl.Event.touchUpInside)
+//        pathView.button.addTarget(self, action: #selector(creatDirectory), for: UIControl.Event.touchUpInside)
         self.view.addSubview(pathView)
 
         mainTableView = UITableView(frame: CGRect.zero, style: UITableView.Style.plain)
@@ -68,9 +66,24 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
 
+    func layoutSuspend() {
+        suspend = Suspend()
+        suspend.hasShadow = false
+        suspend.addItem("newFile", icon: UIImage(named: "file")){ item in
+            self.creatDirectoryOrFile("file")
+        }
+        suspend.addItem("newDirectory", icon: UIImage(named: "directory")) { item in
+            self.creatDirectoryOrFile("directory")
+        }
+        suspend.paddingX = 20
+        suspend.fabDelegate = self
+        suspend.backgroundColor = UIColor.clear
+        self.view.addSubview(suspend)
+    }
+
     //  MARK: - Request
     func requestChaildren(_ type: DriveType, path: String) {
-        HiveHud.showMask(self.view, title: "Please wait", animated: true)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         if path == "/" {
             requestRoot(type)
             return
@@ -92,7 +105,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                 return directory.getChildren()
             }
             .done{ item in
-                HiveHud.hiddenMask()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 item.children.enumerated().forEach{ (idex, item) in
                     let hiveItem = HiveModel()
                     hiveItem.itemId = item.getValue("itemId")
@@ -109,7 +122,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             }
             .catch { error in
-                HiveHud.hiddenMask()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 print(error)
         }
     }
@@ -132,7 +145,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                 return rootDirectory.getChildren()
             }
             .done{ item in
-                HiveHud.hiddenMask()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 item.children.enumerated().forEach{ (idex, item) in
                     let hiveItem = HiveModel()
                     hiveItem.itemId = item.getValue("itemId")
@@ -149,7 +162,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             }
             .catch { error in
-                HiveHud.hiddenMask()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 print(error)
         }
     }
@@ -233,36 +246,36 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
 
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         let deleteAction: UIAlertAction = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default) { (action) in
-            HiveHud.showMask(self.view, title: "Please wait", animated: true)
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             if type == "directory" {
                 self.dHandle?.directoryHandle(atName: name).done{ deleteDHandle in
                     deleteDHandle.deleteItem().done{ success in
-                        HiveHud.hiddenMask()
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
                         HiveHud.show(self.view, "Delete success", 1.5)
                         self.dataSource.remove(at: indexPath!.row)
                         self.mainTableView.reloadData()
                         }.catch{ error in
-                            HiveHud.hiddenMask()
+                            UIApplication.shared.isNetworkActivityIndicatorVisible = false
                             HiveHud.show(self.view, "Delete failed", 1.5)
                     }
                     }.catch{ error in
-                        HiveHud.hiddenMask()
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
                         HiveHud.show(self.view, "Delete failed", 1.5)
                 }
             }
             else {
                 self.dHandle?.fileHandle(atName: name).done{ deleteFile in
                     deleteFile.deleteItem().done{ success in
-                        HiveHud.hiddenMask()
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
                         HiveHud.show(self.view, "Delete success", 1.5)
                         self.dataSource.remove(at: indexPath!.row)
                         self.mainTableView.reloadData()
                         }.catch{ error in
-                            HiveHud.hiddenMask()
+                            UIApplication.shared.isNetworkActivityIndicatorVisible = false
                             HiveHud.show(self.view, "Delete failed", 1.5)
                     }
                     }.catch{ error in
-                        HiveHud.hiddenMask()
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
                         HiveHud.show(self.view, "Delete failed.", 1.5)
                 }
             }
@@ -290,17 +303,33 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     //  MARK: - Button action
-    @objc func creatDirectory() {
+    @objc func creatDirectoryOrFile(_ type: String) {
         var inpuText: UITextField = UITextField()
         let msgAlert = UIAlertController(title: nil, message: "Please input the name", preferredStyle: UIAlertController.Style.alert)
         let ok = UIAlertAction(title: "Sure", style: .default) { action in
             if inpuText.text == "" {
                 HiveHud.show(self.view, "Name not nil", 1.5)
             }else {
-                HiveHud.showMask(self.view, title: "Please wait", animated: true)
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+                if type == "file" {
+                    self.dHandle?.createFile(withName: inpuText.text!).done{ fHandle in
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                        HiveHud.show(self.view, "Create \(inpuText.text!) success", 1.5)
+                        let item = HiveModel()
+                        item.name = inpuText.text!
+                        item.type = "file"
+                        item.itemId = fHandle.fileId
+                        item.size = "0"
+                        self.dataSource.insert(item, at: 0)
+                        self.mainTableView.reloadData()
+                        }.catch{ error in
+
+                        }
+                    return
+                }
                 self.dHandle?.createDirectory(withName: inpuText.text!).done{ directory in
-                    HiveHud.hiddenMask()
-                    HiveHud.show(self.view, "Create success", 1.5)
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    HiveHud.show(self.view, "Create \(inpuText.text!) success", 1.5)
                     let item = HiveModel()
                     item.name = inpuText.text!
                     item.type = "directory"
@@ -309,7 +338,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                     self.dataSource.insert(item, at: 0)
                     self.mainTableView.reloadData()
                     }.catch{ error in
-                        HiveHud.hiddenMask()
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
                         HiveHud.show(self.view, "The same name directory alreadly exists", 1.5)
                 }
             }
@@ -325,11 +354,6 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         msgAlert.addAction(cancle)
         msgAlert.modalPresentationStyle = UIModalPresentationStyle.popover
         self.present(msgAlert, animated: true, completion: nil)
-    }
-
-    //    MARK: Notification action
-    @objc func frientInfoDidChange(_ sender: Notification) {
-
     }
 
 
