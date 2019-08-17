@@ -29,14 +29,13 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         self.view.backgroundColor = ColorHex("#f7f3f3")
         creatUI()
         layoutSuspend()
-        requestChaildren(driveType, path: fullPath)
+        skipList(driveType)
     }
 
     func creatUI() {
 
         pathView = FilePathView()
         self.view.backgroundColor = ColorHex("#f7f3f3")
-//        pathView.button.addTarget(self, action: #selector(creatDirectory), for: UIControl.Event.touchUpInside)
         self.view.addSubview(pathView)
 
         mainTableView = UITableView(frame: CGRect.zero, style: UITableView.Style.plain)
@@ -79,6 +78,30 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         suspend.fabDelegate = self
         suspend.backgroundColor = UIColor.clear
         self.view.addSubview(suspend)
+    }
+
+    //  MARK: - Login
+    func skipList(_ type: DriveType) {
+        let hiveListVC = HiveListViewController()
+        switch type {
+
+        case .nativeStorage: break
+        case .oneDrive:
+            hiveListVC.driveType = .oneDrive
+        case .hiveIPFS:
+            hiveListVC.driveType = .hiveIPFS
+        case .dropBox: break
+        case .ownCloud: break
+        }
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        HiveManager.shareInstance.login(hiveListVC.driveType).done { succeed in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            self.requestChaildren(self.driveType, path: self.path!)
+            }
+            .catch { error in
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                print(error)
+        }
     }
 
     //  MARK: - Request
@@ -137,7 +160,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         case .dropBox: break
         case .ownCloud: break
         }
-
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         hiveClient.defaultDriveHandle().then{ drive -> HivePromise<HiveDirectoryHandle> in
             return drive.rootDirectoryHandle()
             }.then{ rootDirectory -> HivePromise<HiveChildren> in
@@ -197,6 +220,9 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
 
     func refreshUI() {
         self.navigationItem.title = path
+        if path == "/" {
+            self.navigationItem.title = ""
+        }
         self.pathView.containLable.text = fullPath
     }
 
@@ -233,7 +259,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationController?.pushViewController(newListVC, animated: true)
     }
 
-    // MARK --- UILongPressGestureRecognizer action
+    // MARK: --- UILongPressGestureRecognizer action
     @objc func longPressGestureAction(_ sender: UILongPressGestureRecognizer) {
 
         guard sender.state == .changed else {

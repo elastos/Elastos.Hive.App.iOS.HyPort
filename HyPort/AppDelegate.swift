@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController  = navVC
         self.window?.makeKeyAndVisible()
         self.window?.backgroundColor = UIColor.red
-        HiveManager.shareInstance.login(.hiveIPFS)
+        UIApplication.configureLinearNetworkActivityIndicatorIfNeeded()
 
         let presentationStyle = SideMenuPresentationStyle.menuSlideIn
         presentationStyle.menuStartAlpha = 1

@@ -72,41 +72,25 @@ class HomeViewController: UIViewController {
             make.top.equalTo(driveStackView.snp_bottom).offset(40)
         }
     }
-    //  MARK: - Func
-    func skipList(_ type: DriveType, _ animated: Bool) {
-        let hiveListVC = HiveListViewController()
-        var storeValue = ""
-        switch type {
-
-        case .nativeStorage: break
-        case .oneDrive:
-            storeValue = "oneDrive"
-            hiveListVC.driveType = .oneDrive
-        case .hiveIPFS:
-            storeValue = "hiveIPFS"
-            hiveListVC.driveType = .hiveIPFS
-        case .dropBox: break
-        case .ownCloud: break
-        }
-        UserDefaults.standard.set(storeValue, forKey: "DriveType")
-
-        HiveManager.shareInstance.login(hiveListVC.driveType).done { succeed in
-            hiveListVC.fullPath = "/"
-            self.navigationController?.pushViewController(hiveListVC, animated: animated)
-            }
-            .catch { error in
-                print(error)
-        }
-    }
+    
     //    MARK: Button action
     @objc func listAction(_ sendr: UIButton) {
         let typeView = sendr.superview
+        var type: DriveType = DriveType.hiveIPFS
         if (typeView?.isEqual(ipfsDrive))! {
-            skipList(.hiveIPFS, true)
+            type = DriveType.hiveIPFS
         }
         else if (typeView?.isEqual(oneDrive))! {
-            skipList(.oneDrive, true)
+            type = DriveType.oneDrive
         }
+        skipToHiveListVC(type, true)
+    }
+
+    func skipToHiveListVC(_ type: DriveType, _ animated: Bool) {
+        let hiveListVC = HiveListViewController()
+        hiveListVC.path = "/"
+        hiveListVC.driveType = type
+        self.navigationController?.pushViewController(hiveListVC, animated: animated)
     }
 
     func getTopMostViewController() -> UIViewController? {
@@ -151,11 +135,11 @@ class HomeViewController: UIViewController {
     //    MARK: Notification Action
     @objc func showIpfsDriveNotification(_ sender: Notification) {
         self.dismiss(animated: true, completion: nil)
-        skipList(.hiveIPFS, false)
+        skipToHiveListVC(.hiveIPFS, false)
     }
     @objc func showOneDriveNotification(_ sender: Notification) {
         self.dismiss(animated: true, completion: nil)
-        skipList(.oneDrive, false)
+        skipToHiveListVC(.oneDrive, false)
     }
 
 }

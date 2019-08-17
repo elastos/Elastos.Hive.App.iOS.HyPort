@@ -13,4 +13,5 @@ target 'HyPort' do
       pod 'Swifter', '~> 1.4.6'
       pod 'Alamofire'
       pod 'PromiseKit'
+      pod 'FTLinearActivityIndicator'
 end
