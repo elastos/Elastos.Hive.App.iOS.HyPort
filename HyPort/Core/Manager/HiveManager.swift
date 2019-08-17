@@ -19,7 +19,7 @@ class HiveManager: Authenticator {
     var authWebViewController : AuthWebViewController?
     func requestAuthentication(_ requestURL: String) -> Bool {
         let authViewController: AuthWebViewController = AuthWebViewController()
-        DispatchQueue.main.sync {
+        DispatchQueue.main.async {
             let rootViewController: UINavigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
             authViewController.definesPresentationContext = true;
             authViewController.modalPresentationStyle = .overCurrentContext

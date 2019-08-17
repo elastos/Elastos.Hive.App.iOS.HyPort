@@ -32,6 +32,11 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         skipList(driveType)
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+
     func creatUI() {
 
         pathView = FilePathView()
@@ -138,8 +143,10 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                     hiveItem.fullPath = self.dHandle?.pathName
                     self.dataSource.append(hiveItem)
                 }
-                self.refreshUI()
-                self.mainTableView.reloadData()
+                DispatchQueue.main.async {
+                    self.refreshUI()
+                    self.mainTableView.reloadData()
+                }
                 if type == DriveType.hiveIPFS {
                     self.getItemInfo()
                 }
@@ -178,8 +185,10 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                     hiveItem.fullPath = self.dHandle?.pathName
                     self.dataSource.append(hiveItem)
                 }
-                self.refreshUI()
-                self.mainTableView.reloadData()
+                DispatchQueue.main.async {
+                    self.refreshUI()
+                    self.mainTableView.reloadData()
+                }
                 if type == DriveType.hiveIPFS {
                     self.getItemInfo()
                 }
@@ -296,7 +305,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                         HiveHud.show(self.view, "Delete success", 1.5)
                         self.dataSource.remove(at: indexPath!.row)
                         self.mainTableView.reloadData()
-                        }.catch{ error in
+                      }.catch{ error in
                             UIApplication.shared.isNetworkActivityIndicatorVisible = false
                             HiveHud.show(self.view, "Delete failed", 1.5)
                     }
