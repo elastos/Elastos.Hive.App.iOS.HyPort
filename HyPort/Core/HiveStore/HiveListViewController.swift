@@ -15,7 +15,6 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
     var pathView: FilePathView!
     var mainTableView: UITableView!
     var driveType: DriveType!
-    var fullPath: String!
     var path: String?
     var hiveClient: HiveClientHandle!
     var dataSource: Array<HiveModel> = []
@@ -228,11 +227,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func refreshUI() {
-        self.navigationItem.title = path
-        if path == "/" {
-            self.navigationItem.title = ""
-        }
-        self.pathView.containLable.text = fullPath
+        self.pathView.containLable.text = path
     }
 
     //    MARK: tableviewDelegate
@@ -258,10 +253,9 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         let item = dataSource[indexPath.row]
         let currentName = item.name!
         let newListVC = HiveListViewController()
-        newListVC.path = currentName
-        newListVC.fullPath = self.dHandle!.pathName + "/" + currentName
+        newListVC.path = self.dHandle!.pathName + "/" + currentName
         if self.dHandle!.pathName == "/" {
-            newListVC.fullPath = self.dHandle!.pathName + currentName
+            newListVC.path = self.dHandle!.pathName + currentName
         }
         newListVC.driveType = driveType
 
