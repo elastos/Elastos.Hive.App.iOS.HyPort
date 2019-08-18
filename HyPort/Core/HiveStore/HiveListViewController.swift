@@ -9,7 +9,6 @@
 import UIKit
 
 /// The list page
-
 class HiveListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SuspendDelegate {
 
     var pathView: FilePathView!
@@ -21,7 +20,6 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
     var dHandle: HiveDirectoryHandle?
     var fHandle: HiveFileHandle?
     var suspend: Suspend!
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -261,28 +259,23 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
 
         self.navigationController?.pushViewController(newListVC, animated: true)
     }
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String?{
+        return "Delete"
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
+    {
 
-    // MARK: --- UILongPressGestureRecognizer action
-    @objc func longPressGestureAction(_ sender: UILongPressGestureRecognizer) {
-
-        guard sender.state == .changed else {
-            return
-        }
-        let point: CGPoint = sender.location(in: mainTableView)
-        let indexPath = mainTableView.indexPathForRow(at: point)
-        let name = dataSource[(indexPath?.row)!].name!
-        let type = dataSource[(indexPath?.row)!].type
-
-        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-        let deleteAction: UIAlertAction = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default) { (action) in
+        if editingStyle == UITableViewCell.EditingStyle.delete {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            let name = dataSource[(indexPath.row)].name!
+            let type = dataSource[(indexPath.row)].type
             if type == "directory" {
                 self.dHandle?.directoryHandle(atName: name).done{ deleteDHandle in
                     deleteDHandle.deleteItem().done{ success in
                         UIApplication.shared.isNetworkActivityIndicatorVisible = false
                         HiveHud.show(self.view, "Delete success", 1.5)
-                        self.dataSource.remove(at: indexPath!.row)
-                        self.mainTableView.reloadData()
+                        self.dataSource.remove(at: indexPath.row)
+                        tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                         }.catch{ error in
                             UIApplication.shared.isNetworkActivityIndicatorVisible = false
                             HiveHud.show(self.view, "Delete failed", 1.5)
@@ -297,9 +290,9 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                     deleteFile.deleteItem().done{ success in
                         UIApplication.shared.isNetworkActivityIndicatorVisible = false
                         HiveHud.show(self.view, "Delete success", 1.5)
-                        self.dataSource.remove(at: indexPath!.row)
-                        self.mainTableView.reloadData()
-                      }.catch{ error in
+                        self.dataSource.remove(at: indexPath.row)
+                        tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+                        }.catch{ error in
                             UIApplication.shared.isNetworkActivityIndicatorVisible = false
                             HiveHud.show(self.view, "Delete failed", 1.5)
                     }
@@ -309,6 +302,20 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             }
         }
+    }
+
+    // MARK: --- UILongPressGestureRecognizer action
+    @objc func longPressGestureAction(_ sender: UILongPressGestureRecognizer) {
+
+        guard sender.state == .changed else {
+            return
+        }
+        let point: CGPoint = sender.location(in: mainTableView)
+        let indexPath = mainTableView.indexPathForRow(at: point)
+        let name = dataSource[(indexPath?.row)!].name!
+        let type = dataSource[(indexPath?.row)!].type
+
+        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         let renameAction: UIAlertAction = UIAlertAction(title: "Rename", style: UIAlertAction.Style.default) { (action) in
             HiveHud.show(self.view, "Function is developing", 1.5)
         }
@@ -320,7 +327,6 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         }
         let cancleAction: UIAlertAction = UIAlertAction(title: "Cancle", style: UIAlertAction.Style.cancel) { (action) in
         }
-        sheet.addAction(deleteAction)
         sheet.addAction(renameAction)
         sheet.addAction(cancleAction)
         if type == "directory" {
