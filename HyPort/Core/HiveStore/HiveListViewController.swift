@@ -273,9 +273,11 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
 
         self.navigationController?.pushViewController(newListVC, animated: true)
     }
+
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String?{
         return "Delete"
     }
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
     {
 
@@ -370,7 +372,8 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                         item.itemId = fHandle.fileId
                         item.size = "0"
                         self.dataSource.insert(item, at: 0)
-                        self.mainTableView.reloadData()
+                        let indexPath = IndexPath(item: 0, section: 0)
+                        self.mainTableView.insertRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                         }.catch{ error in
 
                         }
@@ -385,7 +388,8 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                     item.itemId = directory.directoryId
                     item.size = "0"
                     self.dataSource.insert(item, at: 0)
-                    self.mainTableView.reloadData()
+                    let indexPath = IndexPath(item: 0, section: 0)
+                    self.mainTableView.insertRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                     }.catch{ error in
                         UIApplication.shared.isNetworkActivityIndicatorVisible = false
                         HiveHud.show(self.view, "The same name directory alreadly exists", 1.5)
@@ -404,12 +408,16 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         msgAlert.modalPresentationStyle = UIModalPresentationStyle.popover
         self.present(msgAlert, animated: true, completion: nil)
     }
-    
+
     @objc func leftList() {
         HiveManager.shareInstance.configSideMune()
     }
 
     @objc func back() {
+        guard self.path != "/" else {
+            self.navigationController?.popToRootViewController(animated: true)
+            return
+        }
         self.navigationController?.popViewController(animated: true)
     }
 
