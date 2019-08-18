@@ -27,11 +27,25 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         creatUI()
         layoutSuspend()
         skipList(driveType)
+        createLeftItem()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+
+    //   MARK: - UI
+    func createLeftItem() {
+        let backimg = UIImage(named: "back")
+        let backitem = UIBarButtonItem(image: backimg, style: UIBarButtonItem.Style.plain, target: self, action: #selector(back))
+        self.navigationItem.leftBarButtonItem = backitem
+        self.navigationItem.hidesBackButton = true
+
+        let listimg = UIImage(named: "list")
+        let listitem = UIBarButtonItem(image: listimg, style: UIBarButtonItem.Style.plain, target: self, action: #selector(leftList))
+        let titleitem = UIBarButtonItem(title: driveType.map { $0.rawValue }, style: UIBarButtonItem.Style.done, target: nil, action: nil)
+        self.navigationItem.leftBarButtonItems = [backitem, titleitem, listitem]
     }
 
     func creatUI() {
@@ -390,6 +404,13 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         msgAlert.modalPresentationStyle = UIModalPresentationStyle.popover
         self.present(msgAlert, animated: true, completion: nil)
     }
+    
+    @objc func leftList() {
+        HiveManager.shareInstance.configSideMune()
+    }
 
+    @objc func back() {
+        self.navigationController?.popViewController(animated: true)
+    }
 
 }

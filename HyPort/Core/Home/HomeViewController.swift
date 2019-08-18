@@ -38,6 +38,7 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(showIpfsDriveNotification(_ :)), name: .showIpfsDrive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showOneDriveNotification(_ :)), name: .showOneDrive, object: nil)
     }
+    
     //   MARK: - UI
     func createLeftItem() {
         let img = UIImage(named: "user")
@@ -93,43 +94,8 @@ class HomeViewController: UIViewController {
         self.navigationController?.pushViewController(hiveListVC, animated: animated)
     }
 
-    func getTopMostViewController() -> UIViewController? {
-        var topMostViewController = UIApplication.shared.keyWindow?.rootViewController
-
-        while let presentedViewController = topMostViewController?.presentedViewController {
-            topMostViewController = presentedViewController
-        }
-
-        return topMostViewController
-    }
-
     @objc func leftList() {
-
-        let presentationStyle = SideMenuPresentationStyle.menuSlideIn
-//        presentationStyle.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background"))
-        presentationStyle.menuStartAlpha = 1.0
-        presentationStyle.menuOnTop = true
-//        presentationStyle.menuScaleFactor = CGFloat(menuScaleFactorSlider.value)
-//        presentationStyle.onTopShadowOpacity = shadowOpacitySlider.value
-//        presentationStyle.presentingEndAlpha = 0
-        presentationStyle.presentingScaleFactor = 1
-        presentationStyle.backgroundColor = UIColor.clear
-
-        var settings = SideMenuSettings()
-        settings.presentationStyle = presentationStyle
-        settings.menuWidth = 300
-//        settings.blurEffectStyle = UIBlurEffect.Style.light
-//        settings.statusBarEndAlpha = 0
-
-        let menu = SideMenuNavigationController(rootViewController: LeftViewController())
-        menu.settings = settings
-        menu.leftSide = true
-        menu.view.frame = CGRect(x: 0, y: 0, width: 200, height: UIScreen.main.bounds.size.height);
-        menu.isNavigationBarHidden = true
-
-        let vc = self.getTopMostViewController()
-        vc!.present(menu, animated: true, completion: nil)
-
+        HiveManager.shareInstance.configSideMune()
     }
 
     //    MARK: Notification Action

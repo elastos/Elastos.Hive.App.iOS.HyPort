@@ -70,4 +70,39 @@ class HiveManager: Authenticator {
         }
         return promise
     }
+
+    func configSideMune() {
+
+        let presentationStyle = SideMenuPresentationStyle.menuSlideIn
+        presentationStyle.menuStartAlpha = 1.0
+        presentationStyle.menuOnTop = true
+        presentationStyle.presentingScaleFactor = 1
+        presentationStyle.backgroundColor = UIColor.clear
+
+        var settings = SideMenuSettings()
+        settings.presentationStyle = presentationStyle
+        settings.menuWidth = 300
+        let menu = SideMenuNavigationController(rootViewController: LeftViewController())
+        menu.settings = settings
+        menu.leftSide = true
+        menu.view.frame = CGRect(x: 0, y: 0, width: 200, height: UIScreen.main.bounds.size.height);
+        menu.isNavigationBarHidden = true
+
+        let vc = self.getTopMostViewController()
+        vc!.present(menu, animated: true, completion: nil)
+
+    }
+
+
+    func getTopMostViewController() -> UIViewController? {
+        var topMostViewController = UIApplication.shared.keyWindow?.rootViewController
+
+        while let presentedViewController = topMostViewController?.presentedViewController {
+            topMostViewController = presentedViewController
+        }
+
+        return topMostViewController
+    }
+
+
 }

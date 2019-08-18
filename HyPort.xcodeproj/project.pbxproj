@@ -14,18 +14,6 @@
 		11E338BB2305302D0089640E /* HiveListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338B82305302D0089640E /* HiveListCell.swift */; };
 		11E338BC2305302D0089640E /* HiveListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338B92305302D0089640E /* HiveListViewController.swift */; };
 		11E338BD2305302D0089640E /* HiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338BA2305302D0089640E /* HiveModel.swift */; };
-		11E338D023058F120089640E /* Print.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338C323058F110089640E /* Print.swift */; };
-		11E338D123058F120089640E /* Initializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338C423058F110089640E /* Initializable.swift */; };
-		11E338D223058F120089640E /* SideMenuInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338C523058F110089640E /* SideMenuInteractionController.swift */; };
-		11E338D423058F120089640E /* SideMenuPresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338C723058F110089640E /* SideMenuPresentationStyle.swift */; };
-		11E338D523058F120089640E /* Protected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338C823058F110089640E /* Protected.swift */; };
-		11E338D623058F120089640E /* SideMenuPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338C923058F110089640E /* SideMenuPresentationController.swift */; };
-		11E338D723058F120089640E /* SideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338CA23058F110089640E /* SideMenuManager.swift */; };
-		11E338D823058F120089640E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338CB23058F110089640E /* Extensions.swift */; };
-		11E338D923058F120089640E /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338CC23058F110089640E /* Models.swift */; };
-		11E338DA23058F120089640E /* SideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338CD23058F110089640E /* SideMenuNavigationController.swift */; };
-		11E338DB23058F120089640E /* SideMenuTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338CE23058F110089640E /* SideMenuTransitionController.swift */; };
-		11E338DC23058F120089640E /* UITableViewVibrantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338CF23058F110089640E /* UITableViewVibrantCell.swift */; };
 		11E338EC2305AF0A0089640E /* UIView+Draggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338E52305AF0A0089640E /* UIView+Draggable.swift */; };
 		11E338ED2305AF0A0089640E /* SuspendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338E62305AF0A0089640E /* SuspendViewController.swift */; };
 		11E338EE2305AF0A0089640E /* Suspend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338E72305AF0A0089640E /* Suspend.swift */; };
@@ -73,18 +61,6 @@
 		11E338B82305302D0089640E /* HiveListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HiveListCell.swift; path = HyPort/Core/HiveStore/HiveListCell.swift; sourceTree = SOURCE_ROOT; };
 		11E338B92305302D0089640E /* HiveListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HiveListViewController.swift; path = HyPort/Core/HiveStore/HiveListViewController.swift; sourceTree = SOURCE_ROOT; };
 		11E338BA2305302D0089640E /* HiveModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HiveModel.swift; path = HyPort/Core/HiveStore/HiveModel.swift; sourceTree = SOURCE_ROOT; };
-		11E338C323058F110089640E /* Print.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Print.swift; sourceTree = "<group>"; };
-		11E338C423058F110089640E /* Initializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Initializable.swift; sourceTree = "<group>"; };
-		11E338C523058F110089640E /* SideMenuInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuInteractionController.swift; sourceTree = "<group>"; };
-		11E338C723058F110089640E /* SideMenuPresentationStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuPresentationStyle.swift; sourceTree = "<group>"; };
-		11E338C823058F110089640E /* Protected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protected.swift; sourceTree = "<group>"; };
-		11E338C923058F110089640E /* SideMenuPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuPresentationController.swift; sourceTree = "<group>"; };
-		11E338CA23058F110089640E /* SideMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuManager.swift; sourceTree = "<group>"; };
-		11E338CB23058F110089640E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		11E338CC23058F110089640E /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		11E338CD23058F110089640E /* SideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuNavigationController.swift; sourceTree = "<group>"; };
-		11E338CE23058F110089640E /* SideMenuTransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTransitionController.swift; sourceTree = "<group>"; };
-		11E338CF23058F110089640E /* UITableViewVibrantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewVibrantCell.swift; sourceTree = "<group>"; };
 		11E338E52305AF0A0089640E /* UIView+Draggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Draggable.swift"; sourceTree = "<group>"; };
 		11E338E62305AF0A0089640E /* SuspendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuspendViewController.swift; sourceTree = "<group>"; };
 		11E338E72305AF0A0089640E /* Suspend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suspend.swift; sourceTree = "<group>"; };
@@ -158,25 +134,6 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		11E338C223058F110089640E /* SideMenu */ = {
-			isa = PBXGroup;
-			children = (
-				11E338C323058F110089640E /* Print.swift */,
-				11E338C423058F110089640E /* Initializable.swift */,
-				11E338C523058F110089640E /* SideMenuInteractionController.swift */,
-				11E338C723058F110089640E /* SideMenuPresentationStyle.swift */,
-				11E338C823058F110089640E /* Protected.swift */,
-				11E338C923058F110089640E /* SideMenuPresentationController.swift */,
-				11E338CA23058F110089640E /* SideMenuManager.swift */,
-				11E338CB23058F110089640E /* Extensions.swift */,
-				11E338CC23058F110089640E /* Models.swift */,
-				11E338CD23058F110089640E /* SideMenuNavigationController.swift */,
-				11E338CE23058F110089640E /* SideMenuTransitionController.swift */,
-				11E338CF23058F110089640E /* UITableViewVibrantCell.swift */,
-			);
-			path = SideMenu;
-			sourceTree = "<group>";
-		};
 		11E338E02305AF0A0089640E /* Suspend */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,7 +202,6 @@
 		11ED67F722FD2482004C17D0 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
-				11E338C223058F110089640E /* SideMenu */,
 				11ED680F22FD2AFA004C17D0 /* NetworkReachability */,
 				11ED680522FD29AE004C17D0 /* MBProgressHUD */,
 			);
@@ -443,29 +399,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11E338D223058F120089640E /* SideMenuInteractionController.swift in Sources */,
 				11E33884230446650089640E /* BaseNavigationController.swift in Sources */,
 				11E338BC2305302D0089640E /* HiveListViewController.swift in Sources */,
 				11ED67EC22FBF8FA004C17D0 /* NormalView.swift in Sources */,
 				11C7286723007AD70078BB80 /* AuthWebViewController.swift in Sources */,
-				11E338DC23058F120089640E /* UITableViewVibrantCell.swift in Sources */,
 				11E338BD2305302D0089640E /* HiveModel.swift in Sources */,
 				11E338772303F2370089640E /* HiveHud.swift in Sources */,
-				11E338DB23058F120089640E /* SideMenuTransitionController.swift in Sources */,
 				11E338EF2305AF0A0089640E /* SuspendDelegate.swift in Sources */,
 				11E338EC2305AF0A0089640E /* UIView+Draggable.swift in Sources */,
 				11E338FF23067B220089640E /* SuspendItem.swift in Sources */,
-				11E338D623058F120089640E /* SideMenuPresentationController.swift in Sources */,
 				11E338FD23067A960089640E /* SuspendManager.swift in Sources */,
 				11ED682622FEF3A7004C17D0 /* FilePathView.swift in Sources */,
-				11E338D923058F120089640E /* Models.swift in Sources */,
 				11ED67E322FBE04C004C17D0 /* LeftViewController.swift in Sources */,
-				11E338D423058F120089640E /* SideMenuPresentationStyle.swift in Sources */,
 				11E338B72305300D0089640E /* HiveManager.swift in Sources */,
 				11E338BB2305302D0089640E /* HiveListCell.swift in Sources */,
-				11E338D823058F120089640E /* Extensions.swift in Sources */,
-				11E338D723058F120089640E /* SideMenuManager.swift in Sources */,
-				11E338D523058F120089640E /* Protected.swift in Sources */,
 				11ED67F522FC6F95004C17D0 /* DriveView.swift in Sources */,
 				11ED67D022FBD037004C17D0 /* HomeViewController.swift in Sources */,
 				11ED681122FD2AFA004C17D0 /* NetworkReachabilityManager.swift in Sources */,
@@ -473,12 +420,9 @@
 				11ED67CE22FBD037004C17D0 /* AppDelegate.swift in Sources */,
 				11ED67EE22FC1100004C17D0 /* HeaderView.swift in Sources */,
 				11E338F9230676510089640E /* Counst.swift in Sources */,
-				11E338DA23058F120089640E /* SideMenuNavigationController.swift in Sources */,
 				11E338EE2305AF0A0089640E /* Suspend.swift in Sources */,
 				11ED67F322FC223E004C17D0 /* SwitchView.swift in Sources */,
-				11E338D023058F120089640E /* Print.swift in Sources */,
 				11ED682822FF0DCB004C17D0 /* Hive.swift in Sources */,
-				11E338D123058F120089640E /* Initializable.swift in Sources */,
 				11E338FB23067A150089640E /* SuspendWindow.swift in Sources */,
 				11E338ED2305AF0A0089640E /* SuspendViewController.swift in Sources */,
 			);

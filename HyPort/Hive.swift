@@ -13,3 +13,4 @@ import Foundation
 @_exported import PromiseKit
 @_exported import ElastosHiveSDK
 @_exported import FTLinearActivityIndicator
+@_exported import SideMenu
