@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		116D5AE2231D5BFD00AEF9A2 /* HiveListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D5ADF231D5BFD00AEF9A2 /* HiveListViewController.swift */; };
+		116D5AE3231D5BFD00AEF9A2 /* HiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D5AE0231D5BFD00AEF9A2 /* HiveModel.swift */; };
+		116D5AE4231D5BFD00AEF9A2 /* HiveListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D5AE1231D5BFD00AEF9A2 /* HiveListCell.swift */; };
+		116D5AE6231D5C3100AEF9A2 /* FileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D5AE5231D5C3100AEF9A2 /* FileViewController.swift */; };
+		116D5AE8231D617C00AEF9A2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D5AE7231D617C00AEF9A2 /* BaseViewController.swift */; };
 		11C7286723007AD70078BB80 /* AuthWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C7286623007AD70078BB80 /* AuthWebViewController.swift */; };
 		11E338772303F2370089640E /* HiveHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338762303F2370089640E /* HiveHud.swift */; };
 		11E33884230446650089640E /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E33883230446650089640E /* BaseNavigationController.swift */; };
 		11E338B72305300D0089640E /* HiveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338B52305300D0089640E /* HiveManager.swift */; };
-		11E338BB2305302D0089640E /* HiveListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338B82305302D0089640E /* HiveListCell.swift */; };
-		11E338BC2305302D0089640E /* HiveListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338B92305302D0089640E /* HiveListViewController.swift */; };
-		11E338BD2305302D0089640E /* HiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338BA2305302D0089640E /* HiveModel.swift */; };
 		11E338EC2305AF0A0089640E /* UIView+Draggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338E52305AF0A0089640E /* UIView+Draggable.swift */; };
 		11E338ED2305AF0A0089640E /* SuspendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338E62305AF0A0089640E /* SuspendViewController.swift */; };
 		11E338EE2305AF0A0089640E /* Suspend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338E72305AF0A0089640E /* Suspend.swift */; };
@@ -54,13 +56,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		116D5ADF231D5BFD00AEF9A2 /* HiveListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiveListViewController.swift; sourceTree = "<group>"; };
+		116D5AE0231D5BFD00AEF9A2 /* HiveModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiveModel.swift; sourceTree = "<group>"; };
+		116D5AE1231D5BFD00AEF9A2 /* HiveListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiveListCell.swift; sourceTree = "<group>"; };
+		116D5AE5231D5C3100AEF9A2 /* FileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewController.swift; sourceTree = "<group>"; };
+		116D5AE7231D617C00AEF9A2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		11C7286623007AD70078BB80 /* AuthWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthWebViewController.swift; sourceTree = "<group>"; };
 		11E338762303F2370089640E /* HiveHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveHud.swift; sourceTree = "<group>"; };
 		11E33883230446650089640E /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		11E338B52305300D0089640E /* HiveManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HiveManager.swift; path = HyPort/Core/Manager/HiveManager.swift; sourceTree = SOURCE_ROOT; };
-		11E338B82305302D0089640E /* HiveListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HiveListCell.swift; path = HyPort/Core/HiveStore/HiveListCell.swift; sourceTree = SOURCE_ROOT; };
-		11E338B92305302D0089640E /* HiveListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HiveListViewController.swift; path = HyPort/Core/HiveStore/HiveListViewController.swift; sourceTree = SOURCE_ROOT; };
-		11E338BA2305302D0089640E /* HiveModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HiveModel.swift; path = HyPort/Core/HiveStore/HiveModel.swift; sourceTree = SOURCE_ROOT; };
 		11E338E52305AF0A0089640E /* UIView+Draggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Draggable.swift"; sourceTree = "<group>"; };
 		11E338E62305AF0A0089640E /* SuspendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuspendViewController.swift; sourceTree = "<group>"; };
 		11E338E72305AF0A0089640E /* Suspend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suspend.swift; sourceTree = "<group>"; };
@@ -107,16 +111,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		111E0C3F2302880F00167953 /* Hive */ = {
+		116D5ADE231D5BFD00AEF9A2 /* Hive */ = {
 			isa = PBXGroup;
 			children = (
-				11E338B92305302D0089640E /* HiveListViewController.swift */,
-				11E338B82305302D0089640E /* HiveListCell.swift */,
-				11E338BA2305302D0089640E /* HiveModel.swift */,
+				116D5ADF231D5BFD00AEF9A2 /* HiveListViewController.swift */,
+				116D5AE5231D5C3100AEF9A2 /* FileViewController.swift */,
+				116D5AE0231D5BFD00AEF9A2 /* HiveModel.swift */,
+				116D5AE1231D5BFD00AEF9A2 /* HiveListCell.swift */,
 			);
-			name = Hive;
-			path = HyPort/Hive;
-			sourceTree = SOURCE_ROOT;
+			path = Hive;
+			sourceTree = "<group>";
 		};
 		11C7286523007ACF0078BB80 /* AuthWebView */ = {
 			isa = PBXGroup;
@@ -130,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				11E33883230446650089640E /* BaseNavigationController.swift */,
+				116D5AE7231D617C00AEF9A2 /* BaseViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -238,10 +243,10 @@
 		11ED681A22FD60FF004C17D0 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				116D5ADE231D5BFD00AEF9A2 /* Hive */,
 				11ED682C22FF22E8004C17D0 /* Manager */,
 				11ED681B22FD613A004C17D0 /* Home */,
 				11ED681822FD6097004C17D0 /* SideMune */,
-				111E0C3F2302880F00167953 /* Hive */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -399,24 +404,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				116D5AE3231D5BFD00AEF9A2 /* HiveModel.swift in Sources */,
 				11E33884230446650089640E /* BaseNavigationController.swift in Sources */,
-				11E338BC2305302D0089640E /* HiveListViewController.swift in Sources */,
 				11ED67EC22FBF8FA004C17D0 /* NormalView.swift in Sources */,
+				116D5AE4231D5BFD00AEF9A2 /* HiveListCell.swift in Sources */,
 				11C7286723007AD70078BB80 /* AuthWebViewController.swift in Sources */,
-				11E338BD2305302D0089640E /* HiveModel.swift in Sources */,
+				116D5AE8231D617C00AEF9A2 /* BaseViewController.swift in Sources */,
 				11E338772303F2370089640E /* HiveHud.swift in Sources */,
 				11E338EF2305AF0A0089640E /* SuspendDelegate.swift in Sources */,
 				11E338EC2305AF0A0089640E /* UIView+Draggable.swift in Sources */,
+				116D5AE2231D5BFD00AEF9A2 /* HiveListViewController.swift in Sources */,
 				11E338FF23067B220089640E /* SuspendItem.swift in Sources */,
 				11E338FD23067A960089640E /* SuspendManager.swift in Sources */,
 				11ED682622FEF3A7004C17D0 /* FilePathView.swift in Sources */,
 				11ED67E322FBE04C004C17D0 /* LeftViewController.swift in Sources */,
 				11E338B72305300D0089640E /* HiveManager.swift in Sources */,
-				11E338BB2305302D0089640E /* HiveListCell.swift in Sources */,
 				11ED67F522FC6F95004C17D0 /* DriveView.swift in Sources */,
 				11ED67D022FBD037004C17D0 /* HomeViewController.swift in Sources */,
 				11ED681122FD2AFA004C17D0 /* NetworkReachabilityManager.swift in Sources */,
 				11ED680A22FD29AE004C17D0 /* MBProgressHUD.m in Sources */,
+				116D5AE6231D5C3100AEF9A2 /* FileViewController.swift in Sources */,
 				11ED67CE22FBD037004C17D0 /* AppDelegate.swift in Sources */,
 				11ED67EE22FC1100004C17D0 /* HeaderView.swift in Sources */,
 				11E338F9230676510089640E /* Counst.swift in Sources */,

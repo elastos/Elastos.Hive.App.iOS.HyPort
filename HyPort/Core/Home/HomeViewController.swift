@@ -13,7 +13,6 @@ class HomeViewController: UIViewController {
 
     var leftVC: LeftViewController = LeftViewController()
     var driveType: DriveType?
-    var mainTable: UITableView!
     var ipfsDrive: DriveView!
     var oneDrive: DriveView!
     var driveStackView: UIStackView!

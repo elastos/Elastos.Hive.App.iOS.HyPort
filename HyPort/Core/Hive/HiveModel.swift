@@ -15,5 +15,4 @@ class HiveModel {
     var type: String!
     var itemId: String!
     var fullPath: String!
-
 }

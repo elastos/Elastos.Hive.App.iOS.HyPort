@@ -9,16 +9,11 @@
 import UIKit
 
 /// The list page
-class HiveListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SuspendDelegate {
+class HiveListViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, SuspendDelegate {
 
     var pathView: FilePathView!
     var mainTableView: UITableView!
-    var driveType: DriveType!
-    var path: String?
-    var hiveClient: HiveClientHandle!
     var dataSource: Array<HiveModel> = []
-    var dHandle: HiveDirectoryHandle?
-    var fHandle: HiveFileHandle?
     var suspend: Suspend!
 
     override func viewDidLoad() {
@@ -27,25 +22,11 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         creatUI()
         layoutSuspend()
         skipList(driveType)
-        createLeftItem()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }
-
-    //   MARK: - UI
-    func createLeftItem() {
-        let backimg = UIImage(named: "back")
-        let backitem = UIBarButtonItem(image: backimg, style: UIBarButtonItem.Style.plain, target: self, action: #selector(back))
-        self.navigationItem.leftBarButtonItem = backitem
-        self.navigationItem.hidesBackButton = true
-
-        let listimg = UIImage(named: "list")
-        let listitem = UIBarButtonItem(image: listimg, style: UIBarButtonItem.Style.plain, target: self, action: #selector(leftList))
-        let titleitem = UIBarButtonItem(title: driveType.map { $0.rawValue }, style: UIBarButtonItem.Style.done, target: nil, action: nil)
-        self.navigationItem.leftBarButtonItems = [backitem, titleitem, listitem]
     }
 
     func creatUI() {
@@ -256,22 +237,20 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard dataSource[indexPath.row].type == "directory" else {
-            // TODO view for file
-            HiveHud.show(self.view, "Function is developing", 1.5)
-            return
-        }
-
         let item = dataSource[indexPath.row]
         let currentName = item.name!
-        let newListVC = HiveListViewController()
-        newListVC.path = self.dHandle!.pathName + "/" + currentName
-        if self.dHandle!.pathName == "/" {
-            newListVC.path = self.dHandle!.pathName + currentName
+        var nextVC: BaseViewController!
+        if dataSource[indexPath.row].type == "directory" {
+            nextVC = HiveListViewController()
+        }else {
+            nextVC = FileViewController()
         }
-        newListVC.driveType = driveType
-
-        self.navigationController?.pushViewController(newListVC, animated: true)
+        nextVC.path = self.dHandle!.pathName + "/" + currentName
+        if self.dHandle!.pathName == "/" {
+            nextVC.path = self.dHandle!.pathName + currentName
+        }
+        nextVC.driveType = driveType
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String?{
@@ -328,7 +307,7 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         }
         let point: CGPoint = sender.location(in: mainTableView)
         let indexPath = mainTableView.indexPathForRow(at: point)
-        let name = dataSource[(indexPath?.row)!].name!
+//        let name = dataSource[(indexPath?.row)!].name!
         let type = dataSource[(indexPath?.row)!].type
 
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
@@ -407,18 +386,6 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         msgAlert.addAction(cancle)
         msgAlert.modalPresentationStyle = UIModalPresentationStyle.popover
         self.present(msgAlert, animated: true, completion: nil)
-    }
-
-    @objc func leftList() {
-        HiveManager.shareInstance.configSideMune()
-    }
-
-    @objc func back() {
-        guard self.path != "/" else {
-            self.navigationController?.popToRootViewController(animated: true)
-            return
-        }
-        self.navigationController?.popViewController(animated: true)
     }
 
 }
