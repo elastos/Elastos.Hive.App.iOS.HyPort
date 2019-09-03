@@ -13,17 +13,18 @@ class FileViewController: BaseViewController {
     var scrollerView: UIScrollView!
     var stackView: UIStackView!
     var textView: UITextView!
+    var isEdite: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         creatUI()
-        createRiteItem(true)
+        createRiteItem()
         requestFile(driveType, path: path!)
     }
 
     //   MARK: - UI
-    func createRiteItem(_ isEdite: Bool) {
+    func createRiteItem() {
         var name: String!
         if isEdite {
             name = "Edite"
@@ -31,7 +32,7 @@ class FileViewController: BaseViewController {
         else {
             name = "Submite"
         }
-        let backitem = UIBarButtonItem(title: name, style: .done, target: self, action: #selector(edite(_:)))
+        let backitem = UIBarButtonItem(title: name, style: .done, target: self, action: #selector(edite))
         self.navigationItem.rightBarButtonItem = backitem
     }
 
@@ -81,9 +82,12 @@ class FileViewController: BaseViewController {
     }
 
     //    MARK: - Button Action
-    @objc func edite(_ isEdite: Bool) {
-        HiveHud.show(self.view, "Function is developing", 1.5)
-        createRiteItem(isEdite)
+    @objc func edite() {
+        isEdite = !isEdite
         textView.isEditable = !isEdite
+        if isEdite {
+            HiveHud.show(self.view, "Function is developing", 1.5)
+        }
+        createRiteItem()
     }
 }
