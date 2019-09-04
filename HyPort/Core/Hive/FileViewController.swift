@@ -71,7 +71,7 @@ class FileViewController: BaseViewController {
             .done{ data in
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 DispatchQueue.main.async {
-                    let str = data.base64EncodedString()
+                    let str = String(data: data, encoding: .utf8)
                     self.textView.text = str
                 }
             }
@@ -86,7 +86,14 @@ class FileViewController: BaseViewController {
         isEdite = !isEdite
         textView.isEditable = !isEdite
         if isEdite {
-            HiveHud.show(self.view, "Function is developing", 1.5)
+            let data = textView.text.data(using: .utf8)
+            self.fHandle?.writeData(withData: data!).then{ length -> HivePromise<Void> in
+                return (self.fHandle?.commitData())!
+                }.done{ void in
+                    HiveHud.show(self.view, "Modity success", 1.5)
+                }.catch{ error in
+                    HiveHud.show(self.view, error.localizedDescription, 1.5)
+                }
         }
         createRiteItem()
     }
