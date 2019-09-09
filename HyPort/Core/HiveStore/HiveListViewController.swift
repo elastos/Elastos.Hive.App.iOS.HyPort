@@ -328,7 +328,6 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         }
         let point: CGPoint = sender.location(in: mainTableView)
         let indexPath = mainTableView.indexPathForRow(at: point)
-        let name = dataSource[(indexPath?.row)!].name!
         let type = dataSource[(indexPath?.row)!].type
 
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
@@ -338,16 +337,12 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
         let shareAction: UIAlertAction = UIAlertAction(title: "Share", style: UIAlertAction.Style.default) { (action) in
             HiveHud.show(self.view, "Function is developing", 1.5)
         }
-        let uploadAction: UIAlertAction = UIAlertAction(title: "Upload", style: UIAlertAction.Style.default) { (action) in
-             HiveHud.show(self.view, "Function is developing", 1.5)
-        }
         let cancleAction: UIAlertAction = UIAlertAction(title: "Cancle", style: UIAlertAction.Style.cancel) { (action) in
         }
         sheet.addAction(renameAction)
         sheet.addAction(cancleAction)
         if type == "directory" {
             sheet.addAction(shareAction)
-            sheet.addAction(uploadAction)
         }
         sheet.modalPresentationStyle = UIModalPresentationStyle.popover
         self.present(sheet, animated: true, completion: nil)

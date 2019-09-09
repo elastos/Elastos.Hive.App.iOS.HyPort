@@ -9,8 +9,8 @@ target 'HyPort' do
       pod 'SnapKit', '~> 4.0.0'
       pod 'FTLinearActivityIndicator'
       pod 'SideMenu'
-      pod 'RxSwift',    '~> 4.0'
-      pod 'RxCocoa',    '~> 4.0'
+     # pod 'RxSwift',    '~> 4.0'
+     # pod 'RxCocoa',    '~> 4.0'
 
       pod 'ElastosHiveSDK', '0.5.0'
       pod 'Swifter', '~> 1.4.6'
