@@ -147,10 +147,10 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 item.children.enumerated().forEach{ (idex, item) in
                     let hiveItem = HiveModel()
-                    hiveItem.itemId = item.getValue("itemId")
-                    hiveItem.name = item.getValue("name")
-                    hiveItem.size = item.getValue("size")
-                    hiveItem.type = item.getValue("type")
+                    hiveItem.itemId = item.getValue(HiveItemInfo.itemId)
+                    hiveItem.name = item.getValue(HiveItemInfo.name)
+                    hiveItem.size = item.getValue(HiveItemInfo.size)
+                    hiveItem.type = item.getValue(HiveItemInfo.type)
                     hiveItem.fullPath = self.dHandle?.pathName
                     self.dataSource.append(hiveItem)
                 }
@@ -189,10 +189,10 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 item.children.enumerated().forEach{ (idex, item) in
                     let hiveItem = HiveModel()
-                    hiveItem.itemId = item.getValue("itemId")
-                    hiveItem.name = item.getValue("name")
-                    hiveItem.size = item.getValue("size")
-                    hiveItem.type = item.getValue("type")
+                    hiveItem.itemId = item.getValue(HiveItemInfo.itemId)
+                    hiveItem.name = item.getValue(HiveItemInfo.name)
+                    hiveItem.size = item.getValue(HiveItemInfo.size)
+                    hiveItem.type = item.getValue(HiveItemInfo.type)
                     hiveItem.fullPath = self.dHandle?.pathName
                     self.dataSource.append(hiveItem)
                 }
@@ -224,10 +224,10 @@ class HiveListViewController: UIViewController, UITableViewDelegate, UITableView
             return drive.getItemInfo(path)
             }.done{ itemInfo in
                 let newItem = HiveModel()
-                newItem.name = itemInfo.getValue("name")
-                newItem.size = itemInfo.getValue("size")
-                newItem.type = itemInfo.getValue("type")
-                newItem.itemId = itemInfo.getValue("itemId")
+                newItem.name = itemInfo.getValue(HiveItemInfo.name)
+                newItem.size = itemInfo.getValue(HiveItemInfo.size)
+                newItem.type = itemInfo.getValue(HiveItemInfo.type)
+                newItem.itemId = itemInfo.getValue(HiveItemInfo.itemId)
                 self.dataSource[index] = newItem
                 let indexPath = IndexPath.init(row: index, section: 0)
                 UIView.performWithoutAnimation {

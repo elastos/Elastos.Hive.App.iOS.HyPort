@@ -321,7 +321,7 @@
 				};
 			};
 			buildConfigurationList = 11ED67C522FBD036004C17D0 /* Build configuration list for PBXProject "HyPort" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -580,7 +580,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = elastos.HyPort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HyPort/HyPort-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "x86_64 arm64";
@@ -608,7 +608,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = elastos.HyPort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HyPort/HyPort-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "x86_64 arm64";
