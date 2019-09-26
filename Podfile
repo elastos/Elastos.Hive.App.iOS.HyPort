@@ -9,7 +9,7 @@ target 'HyPort' do
       pod 'SnapKit', '~> 4.0.0'
       pod 'FTLinearActivityIndicator'
       pod 'SideMenu', '6.4.0'
-      pod 'ElastosHiveSDK', '0.5.0'
+      pod 'ElastosHiveSDK', '0.5.1'
       pod 'Swifter', '~> 1.4.6'
       pod 'Alamofire'
       pod 'PromiseKit'
