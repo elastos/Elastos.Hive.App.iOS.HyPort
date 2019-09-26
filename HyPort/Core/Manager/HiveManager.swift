@@ -23,8 +23,10 @@ class HiveManager: Authenticator {
             let rootViewController: UINavigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
             authViewController.definesPresentationContext = true;
             authViewController.modalPresentationStyle = .overCurrentContext
+            let url = URL(string:requestURL)
+            let request: URLRequest = URLRequest(url: url!)
+            authViewController.initialRequest = request
             rootViewController.topViewController!.present(authViewController, animated: true, completion: nil)
-            authViewController.loadRequest(requestURL)
             self.authWebViewController = authViewController;
         }
         return true

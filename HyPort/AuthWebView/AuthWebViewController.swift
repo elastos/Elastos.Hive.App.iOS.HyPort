@@ -16,35 +16,24 @@ public class AuthWebViewController: UIViewController, WKUIDelegate, WKNavigation
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        self.webView = WKWebView()
-        self.webView?.uiDelegate = self
-        self.webView?.navigationDelegate = self
-        self.view.addSubview(self.webView!)
-        self.webView?.frame = self.view.frame
-        
+        loadView()
+        webView!.load(initialRequest!)
+
         let cancel = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action:#selector(Progress.cancel))
         self.navigationController?.topViewController?.navigationItem.leftBarButtonItem = cancel
+    }
+    
+    override public func loadView() {
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView!.uiDelegate = self
+        view = webView
     }
     
     override public func viewWillDisappear(_ animated: Bool) {
         self.webView?.stopLoading()
         self.webView?.uiDelegate = nil
-        self.webView?.navigationDelegate = nil
         super.viewWillAppear(animated)
-    }
-    
-    public func loadRequest(_ requestURL: String){
-        let authURLRequest: URLRequest = getOneDriveAuthonURL(requestURL)
-        self.initialRequest = authURLRequest
-        self.webView?.load(self.initialRequest!)
-    }
-    private func getOneDriveAuthonURL(_ requestURL: String)-> URLRequest {
-        
-        let url = URL(string: requestURL)
-        let urlComponents: URLComponents = URLComponents(url: url!, resolvingAgainstBaseURL: false)!
-        var request: URLRequest = URLRequest(url: urlComponents.url!)
-        request.httpMethod = "GET"
-        return request
     }
     
     func cancel() {
