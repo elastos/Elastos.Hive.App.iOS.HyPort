@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		114E32E823840F2600F91246 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114E32E623840EF400F91246 /* Swifter.framework */; };
+		114E32E923840F2600F91246 /* Swifter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 114E32E623840EF400F91246 /* Swifter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		114E32EC23840F6E00F91246 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114E32EA23840F6600F91246 /* PromiseKit.framework */; };
+		114E32ED23840F6E00F91246 /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 114E32EA23840F6600F91246 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		114E32F52384117F00F91246 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114E32F32384117A00F91246 /* Alamofire.framework */; };
+		114E32F62384117F00F91246 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 114E32F32384117A00F91246 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		116DD8EF238408F00030BA20 /* ElastosHiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116DD8ED238408E70030BA20 /* ElastosHiveSDK.framework */; };
+		116DD8F0238408F00030BA20 /* ElastosHiveSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 116DD8ED238408E70030BA20 /* ElastosHiveSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		11C7286723007AD70078BB80 /* AuthWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C7286623007AD70078BB80 /* AuthWebViewController.swift */; };
 		11E338772303F2370089640E /* HiveHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E338762303F2370089640E /* HiveHud.swift */; };
 		11E33884230446650089640E /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E33883230446650089640E /* BaseNavigationController.swift */; };
@@ -47,6 +55,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				114E32ED23840F6E00F91246 /* PromiseKit.framework in Embed Frameworks */,
+				116DD8F0238408F00030BA20 /* ElastosHiveSDK.framework in Embed Frameworks */,
+				114E32E923840F2600F91246 /* Swifter.framework in Embed Frameworks */,
+				114E32F62384117F00F91246 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,6 +66,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		114E32E623840EF400F91246 /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Swifter.framework; sourceTree = "<group>"; };
+		114E32EA23840F6600F91246 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PromiseKit.framework; sourceTree = "<group>"; };
+		114E32F32384117A00F91246 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
+		116DD8ED238408E70030BA20 /* ElastosHiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ElastosHiveSDK.framework; sourceTree = "<group>"; };
 		11C7286623007AD70078BB80 /* AuthWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthWebViewController.swift; sourceTree = "<group>"; };
 		11E338762303F2370089640E /* HiveHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveHud.swift; sourceTree = "<group>"; };
 		11E33883230446650089640E /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
@@ -100,7 +116,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				114E32E823840F2600F91246 /* Swifter.framework in Frameworks */,
 				C2935B33579071ED79D17063 /* Pods_HyPort.framework in Frameworks */,
+				116DD8EF238408F00030BA20 /* ElastosHiveSDK.framework in Frameworks */,
+				114E32F52384117F00F91246 /* Alamofire.framework in Frameworks */,
+				114E32EC23840F6E00F91246 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +189,10 @@
 		11ED67CC22FBD037004C17D0 /* HyPort */ = {
 			isa = PBXGroup;
 			children = (
+				114E32F32384117A00F91246 /* Alamofire.framework */,
+				114E32EA23840F6600F91246 /* PromiseKit.framework */,
+				114E32E623840EF400F91246 /* Swifter.framework */,
+				116DD8ED238408E70030BA20 /* ElastosHiveSDK.framework */,
 				11E338E02305AF0A0089640E /* Suspend */,
 				11E33880230445570089640E /* Base */,
 				11C7286523007ACF0078BB80 /* AuthWebView */,
