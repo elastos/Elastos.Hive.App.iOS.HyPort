@@ -63,8 +63,11 @@ class HiveManager: Authenticator {
             globalQueue.async {
                 do {
                     _ = try self.hiveClient.login(self as Authenticator)
-                    self.authWebViewController?.dismiss(animated: true, completion: nil)
-                    resolver.fulfill(Void())
+                    DispatchQueue.main.async {
+                        self.authWebViewController?.dismiss(animated: true, completion: nil)
+                        resolver.fulfill(Void())
+                    }
+                    
                 }catch {
                     resolver.reject(error)
                 }
